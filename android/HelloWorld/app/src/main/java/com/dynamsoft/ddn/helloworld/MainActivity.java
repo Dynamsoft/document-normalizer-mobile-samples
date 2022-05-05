@@ -10,7 +10,6 @@ import com.dynamsoft.core.ImageData;
 import com.dynamsoft.dce.CameraEnhancer;
 import com.dynamsoft.dce.CameraEnhancerException;
 import com.dynamsoft.dce.DCECameraView;
-import com.dynamsoft.dce.DCEDrawingLayer;
 import com.dynamsoft.ddn.DetectResultListener;
 import com.dynamsoft.ddn.DetectedQuadResult;
 import com.dynamsoft.ddn.DocumentNormalizer;
@@ -37,12 +36,8 @@ public class MainActivity extends AppCompatActivity {
         mCamera = new CameraEnhancer(this);
         mCamera.setCameraView(mCameraView);
 
-        mCameraView.getDrawingLayer(DCEDrawingLayer.DDN_LAYER_ID).setVisible(true);
-
         try {
-            if (mNormalizer == null) {
-                mNormalizer = new DocumentNormalizer();
-            }
+            mNormalizer = new DocumentNormalizer();
         } catch (DocumentNormalizerException e) {
             e.printStackTrace();
         }

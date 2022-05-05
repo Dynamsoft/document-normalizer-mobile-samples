@@ -14,10 +14,11 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
         ImageView ivNormalize = findViewById(R.id.iv_normalize);
 
         try {
-            ivNormalize.setImageBitmap(QuadEditActivity.mImageResult.image.toBitmap());
+            ivNormalize.setImageBitmap(QuadEditActivity.mNormalizedImageResult.image.toBitmap());
         } catch (CoreException e) {
             e.printStackTrace();
         }

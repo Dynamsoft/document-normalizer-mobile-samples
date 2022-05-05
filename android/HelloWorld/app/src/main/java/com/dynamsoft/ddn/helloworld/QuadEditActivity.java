@@ -24,17 +24,17 @@ import static com.dynamsoft.ddn.helloworld.MainActivity.mQuadResults;
 
 public class QuadEditActivity extends AppCompatActivity {
     private static final String TAG = "QuadEditActivity";
-    DCEImageEditorView imageEditView;
-    public static NormalizedImageResult mImageResult;
+    DCEImageEditorView mImageEditView;
+    public static NormalizedImageResult mNormalizedImageResult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quad_edit);
-        imageEditView = findViewById(R.id.editor_view);
+        mImageEditView = findViewById(R.id.editor_view);
 
-        imageEditView.setOriginalImage(mImageData);
-        DCEDrawingLayer layer = imageEditView.getDrawingLayer(DCEDrawingLayer.DDN_LAYER_ID);
+        mImageEditView.setOriginalImage(mImageData);
+        DCEDrawingLayer layer = mImageEditView.getDrawingLayer(DCEDrawingLayer.DDN_LAYER_ID);
 
         ArrayList<DrawingItem> items = new ArrayList<DrawingItem>();
         for (DetectedQuadResult r : mQuadResults) {
@@ -45,12 +45,12 @@ public class QuadEditActivity extends AppCompatActivity {
 
     public void onNormalizeBtnClick(View v) {
         try {
-            DrawingItem item = imageEditView.getSelectedDrawingItem();
+            DrawingItem item = mImageEditView.getSelectedDrawingItem();
             if(item == null)
-                item = imageEditView.getDrawingLayer(DCEDrawingLayer.DDN_LAYER_ID).getDrawingItems().get(0);
+                item = mImageEditView.getDrawingLayer(DCEDrawingLayer.DDN_LAYER_ID).getDrawingItems().get(0);
 
             if(item instanceof QuadDrawingItem) {
-                mImageResult = mNormalizer.normalize(mImageData, ((QuadDrawingItem) item).getQuad());
+                mNormalizedImageResult = mNormalizer.normalize(mImageData, ((QuadDrawingItem) item).getQuad());
 
                 Intent intent = new Intent(QuadEditActivity.this, ResultActivity.class);
                 startActivity(intent);
