@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.dynamsoft.dce.DCEDrawingLayer;
 import com.dynamsoft.dce.DCEImageEditorView;
 import com.dynamsoft.dce.DrawingItem;
-import com.dynamsoft.dce.EnumDrawingItemState;
 import com.dynamsoft.dce.QuadDrawingItem;
 import com.dynamsoft.ddn.DetectedQuadResult;
 import com.dynamsoft.ddn.DocumentNormalizerException;
@@ -18,26 +17,27 @@ import com.dynamsoft.ddn.NormalizedImageResult;
 
 import java.util.ArrayList;
 
-import static com.dynamsoft.ddn.helloworld.MainActivity.mImageData;
-import static com.dynamsoft.ddn.helloworld.MainActivity.mNormalizer;
-import static com.dynamsoft.ddn.helloworld.MainActivity.mQuadResults;
-
 public class QuadEditActivity extends AppCompatActivity {
     private static final String TAG = "QuadEditActivity";
-    DCEImageEditorView mImageEditView;
+    private DCEImageEditorView mImageEditView;
     public static NormalizedImageResult mNormalizedImageResult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quad_edit);
+
+        // Add image editor view for interactive editing of quads
         mImageEditView = findViewById(R.id.editor_view);
 
-        mImageEditView.setOriginalImage(mImageData);
+        // Set the background image
+        mImageEditView.setOriginalImage(MainActivity.mImageData);
+
+        // Add detected quads as drawing items to the DDN drawing layer.
         DCEDrawingLayer layer = mImageEditView.getDrawingLayer(DCEDrawingLayer.DDN_LAYER_ID);
 
         ArrayList<DrawingItem> items = new ArrayList<DrawingItem>();
-        for (DetectedQuadResult r : mQuadResults) {
+        for (DetectedQuadResult r : MainActivity.mQuadResults) {
             items.add(new QuadDrawingItem(r.location));
         }
         layer.setDrawingItems(items);
@@ -45,13 +45,16 @@ public class QuadEditActivity extends AppCompatActivity {
 
     public void onNormalizeBtnClick(View v) {
         try {
+            // Get the selected drawing item of DCEImageEditorView.
             DrawingItem item = mImageEditView.getSelectedDrawingItem();
             if(item == null)
                 item = mImageEditView.getDrawingLayer(DCEDrawingLayer.DDN_LAYER_ID).getDrawingItems().get(0);
 
             if(item instanceof QuadDrawingItem) {
-                mNormalizedImageResult = mNormalizer.normalize(mImageData, ((QuadDrawingItem) item).getQuad());
+                // Normalize the image with the selected quad.
+                mNormalizedImageResult = MainActivity.mNormalizer.normalize(MainActivity.mImageData, ((QuadDrawingItem) item).getQuad());
 
+                // Start ResultActivity to display the final result.
                 Intent intent = new Intent(QuadEditActivity.this, ResultActivity.class);
                 startActivity(intent);
             }
