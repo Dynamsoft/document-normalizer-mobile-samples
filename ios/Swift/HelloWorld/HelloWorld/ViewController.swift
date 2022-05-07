@@ -39,6 +39,8 @@ class ViewController: UIViewController, DetectResultListener {
         dceView = DCECameraView(frame: view.bounds)
         view.addSubview(dceView)
 
+        dceView.getDrawingLayer(Int(DDN_LAYER_ID))
+        
         dce = DynamsoftCameraEnhancer(view: dceView)
         dce.open()
         StaticClass.instance.ddn.setCameraEnhancer(dce)
