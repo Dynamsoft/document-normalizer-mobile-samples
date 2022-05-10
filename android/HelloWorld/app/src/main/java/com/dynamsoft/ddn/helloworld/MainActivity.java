@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.dynamsoft.core.CoreException;
 import com.dynamsoft.core.LicenseManager;
@@ -40,8 +41,15 @@ public class MainActivity extends AppCompatActivity {
         LicenseManager.initLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", new LicenseVerificationListener() {
             @Override
             public void licenseVerificationCallback(boolean isSuccess, CoreException error) {
-                if(!isSuccess){
+                if (!isSuccess) {
                     error.printStackTrace();
+                    MainActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast ts = Toast.makeText(getBaseContext(), "error:"+ error.getErrorCode()+ " "+error.getMessage(), Toast.LENGTH_LONG);
+                            ts.show();
+                        }
+                    });
                 }
             }
         });
