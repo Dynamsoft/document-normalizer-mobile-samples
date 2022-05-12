@@ -15,7 +15,7 @@
 		683E21042825346800BFF811 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683E21022825346800BFF811 /* LaunchScreen.storyboard */; };
 		683E210C2825355B00BFF811 /* QuadEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E210B2825355B00BFF811 /* QuadEditViewController.swift */; };
 		683E210E2825357500BFF811 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E210D2825357500BFF811 /* ResultViewController.swift */; };
-		683E2110282535A000BFF811 /* StaticClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E210F282535A000BFF811 /* StaticClass.swift */; };
+		683E2110282535A000BFF811 /* DDNDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E210F282535A000BFF811 /* DDNDataManager.swift */; };
 		683E21172825395900BFF811 /* DynamsoftCameraEnhancer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21122825395800BFF811 /* DynamsoftCameraEnhancer.framework */; platformFilter = ios; };
 		683E21182825395900BFF811 /* DynamsoftCameraEnhancer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21122825395800BFF811 /* DynamsoftCameraEnhancer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		683E21192825395900BFF811 /* DynamsoftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21132825395800BFF811 /* DynamsoftCore.framework */; platformFilter = ios; };
@@ -57,7 +57,7 @@
 		683E21052825346800BFF811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		683E210B2825355B00BFF811 /* QuadEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadEditViewController.swift; sourceTree = "<group>"; };
 		683E210D2825357500BFF811 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		683E210F282535A000BFF811 /* StaticClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StaticClass.swift; path = HelloWorld/StaticClass.swift; sourceTree = SOURCE_ROOT; };
+		683E210F282535A000BFF811 /* DDNDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DDNDataManager.swift; path = HelloWorld/DDNDataManager.swift; sourceTree = SOURCE_ROOT; };
 		683E21122825395800BFF811 /* DynamsoftCameraEnhancer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftCameraEnhancer.framework; path = ../../../Frameworks/DynamsoftCameraEnhancer.framework; sourceTree = "<group>"; };
 		683E21132825395800BFF811 /* DynamsoftCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftCore.framework; path = ../../../Frameworks/DynamsoftCore.framework; sourceTree = "<group>"; };
 		683E21142825395900BFF811 /* DynamsoftImageProcessing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftImageProcessing.framework; path = ../../../Frameworks/DynamsoftImageProcessing.framework; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		683E20F62825346000BFF811 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
-				683E210F282535A000BFF811 /* StaticClass.swift */,
+				683E210F282535A000BFF811 /* DDNDataManager.swift */,
 				683E210D2825357500BFF811 /* ResultViewController.swift */,
 				683E210B2825355B00BFF811 /* QuadEditViewController.swift */,
 				683E20F72825346000BFF811 /* AppDelegate.swift */,
@@ -201,7 +201,7 @@
 			files = (
 				683E210E2825357500BFF811 /* ResultViewController.swift in Sources */,
 				683E20FC2825346000BFF811 /* ViewController.swift in Sources */,
-				683E2110282535A000BFF811 /* StaticClass.swift in Sources */,
+				683E2110282535A000BFF811 /* DDNDataManager.swift in Sources */,
 				683E20F82825346000BFF811 /* AppDelegate.swift in Sources */,
 				683E20FA2825346000BFF811 /* SceneDelegate.swift in Sources */,
 				683E210C2825355B00BFF811 /* QuadEditViewController.swift in Sources */,

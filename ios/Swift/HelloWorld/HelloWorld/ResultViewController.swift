@@ -23,7 +23,7 @@ class ResultViewController : UIViewController {
         imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: w, height: h))
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFit
-        imageView.image = StaticClass.instance.resultImage
+        imageView.image = DDNDataManager.instance.resultImage
         view.addSubview(imageView)
     }
 }

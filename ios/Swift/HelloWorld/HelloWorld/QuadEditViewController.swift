@@ -20,12 +20,12 @@ class QuadEditViewController: UIViewController {
 
     func configImageEditorView() {
         editorView = DCEImageEditorView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        editorView.setOriginalImage(StaticClass.instance.imageData)
+        editorView.setOriginalImage(DDNDataManager.instance.imageData)
 
         layer = editorView.getDrawingLayer(Int(DDN_LAYER_ID))
 
         var array: [DrawingItem]? = []
-        for detectedQuadResult in StaticClass.instance.quadArr {
+        for detectedQuadResult in DDNDataManager.instance.quadArr {
             let quad = detectedQuadResult.location
             let quadItem = QuadDrawingItem(quad: quad)
             array?.append(quadItem)
@@ -54,9 +54,9 @@ class QuadEditViewController: UIViewController {
             item = layer.drawingItems?[0] as? QuadDrawingItem
         }
 
-        let imageData = try? StaticClass.instance.ddn.normalizeBuffer(StaticClass.instance.imageData, quad: item!.quad)
+        let imageData = try? DDNDataManager.instance.ddn.normalizeBuffer(DDNDataManager.instance.imageData, quad: item!.quad)
 
-        StaticClass.instance.resultImage = imageData?.image.toUIImage()
+        DDNDataManager.instance.resultImage = try? imageData?.image.toUIImage()
         DispatchQueue.main.async(execute: { [self] in
             performSegue(withIdentifier: "pushResultView", sender: nil)
         })

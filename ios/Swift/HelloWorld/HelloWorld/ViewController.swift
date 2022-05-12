@@ -23,16 +23,16 @@ class ViewController: UIViewController, DetectResultListener {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        StaticClass.instance.ddn.startDetecting()
+        DDNDataManager.instance.ddn.startDetecting()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        StaticClass.instance.ddn.stopDetecting()
+        DDNDataManager.instance.ddn.stopDetecting()
     }
 
     func configDDN() {
-        StaticClass.instance.ddn = DynamsoftDocumentNormalizer()
+        DDNDataManager.instance.ddn = DynamsoftDocumentNormalizer()
     }
 
     func configDCE() {
@@ -43,8 +43,8 @@ class ViewController: UIViewController, DetectResultListener {
         
         dce = DynamsoftCameraEnhancer(view: dceView)
         dce.open()
-        StaticClass.instance.ddn.setCameraEnhancer(dce)
-        StaticClass.instance.ddn.setDetectResultListener(self)
+        DDNDataManager.instance.ddn.setCameraEnhancer(dce)
+        DDNDataManager.instance.ddn.setDetectResultListener(self)
     }
 
     func configUI() {
@@ -69,8 +69,8 @@ class ViewController: UIViewController, DetectResultListener {
         if isNeedToQuadEdit && !results.isEmpty {
             isNeedToQuadEdit = false
 
-            StaticClass.instance.quadArr = results
-            StaticClass.instance.imageData = imageData
+            DDNDataManager.instance.quadArr = results
+            DDNDataManager.instance.imageData = imageData
 
             DispatchQueue.main.async(execute: { [self] in
                 performSegue(withIdentifier: "pushQuadEditView", sender: nil)

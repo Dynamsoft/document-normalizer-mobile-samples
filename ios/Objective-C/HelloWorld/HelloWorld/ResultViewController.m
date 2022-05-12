@@ -7,7 +7,7 @@
 //
 
 #import "ResultViewController.h"
-#import "StaticClass.h"
+#import "DDNDataManager.h"
 
 @interface ResultViewController ()
 
@@ -31,7 +31,7 @@
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, w, h)];
     imageView.userInteractionEnabled = YES;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [imageView setImage:[StaticClass instance].resultImage];
+    [imageView setImage:[DDNDataManager instance].resultImage];
     [self.view addSubview:self->imageView];
 }
 

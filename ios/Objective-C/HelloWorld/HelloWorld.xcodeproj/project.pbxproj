@@ -19,7 +19,7 @@
 		842D809E281B89F90029DFF0 /* DynamsoftIntermediateResult.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842D809B281B89F90029DFF0 /* DynamsoftIntermediateResult.framework */; platformFilter = ios; };
 		842D809F281B89F90029DFF0 /* DynamsoftIntermediateResult.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 842D809B281B89F90029DFF0 /* DynamsoftIntermediateResult.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		847BA9A827D1E7C2002265DE /* QuadEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847BA9A727D1E7C2002265DE /* QuadEditViewController.m */; };
-		847BA9AB27D1EDDE002265DE /* StaticClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 847BA9AA27D1EDDE002265DE /* StaticClass.m */; };
+		847BA9AB27D1EDDE002265DE /* DDNDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 847BA9AA27D1EDDE002265DE /* DDNDataManager.m */; };
 		847F073127FFDA8600DDAF80 /* DynamsoftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8484E28227C4BBB7004B4807 /* DynamsoftCore.framework */; };
 		847F073227FFDA8600DDAF80 /* DynamsoftCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8484E28227C4BBB7004B4807 /* DynamsoftCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8484E28027C4BBB7004B4807 /* DynamsoftCameraEnhancer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8429C9D1276B3D4D00C95E4B /* DynamsoftCameraEnhancer.framework */; platformFilter = ios; };
@@ -61,8 +61,8 @@
 		842D809B281B89F90029DFF0 /* DynamsoftIntermediateResult.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftIntermediateResult.framework; path = ../../../Frameworks/DynamsoftIntermediateResult.framework; sourceTree = "<group>"; };
 		847BA9A627D1E7C2002265DE /* QuadEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuadEditViewController.h; sourceTree = "<group>"; };
 		847BA9A727D1E7C2002265DE /* QuadEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuadEditViewController.m; sourceTree = "<group>"; };
-		847BA9A927D1EDDE002265DE /* StaticClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaticClass.h; sourceTree = "<group>"; };
-		847BA9AA27D1EDDE002265DE /* StaticClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaticClass.m; sourceTree = "<group>"; };
+		847BA9A927D1EDDE002265DE /* DDNDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDNDataManager.h; sourceTree = "<group>"; };
+		847BA9AA27D1EDDE002265DE /* DDNDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDNDataManager.m; sourceTree = "<group>"; };
 		8484E28127C4BBB7004B4807 /* DynamsoftDocumentNormalizer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftDocumentNormalizer.framework; path = ../../../Frameworks/DynamsoftDocumentNormalizer.framework; sourceTree = "<group>"; };
 		8484E28227C4BBB7004B4807 /* DynamsoftCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftCore.framework; path = ../../../Frameworks/DynamsoftCore.framework; sourceTree = "<group>"; };
 		848AAE5A27C8A64B00DFFCCB /* ResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
@@ -121,8 +121,8 @@
 				848AAE5B27C8A64B00DFFCCB /* ResultViewController.m */,
 				847BA9A627D1E7C2002265DE /* QuadEditViewController.h */,
 				847BA9A727D1E7C2002265DE /* QuadEditViewController.m */,
-				847BA9A927D1EDDE002265DE /* StaticClass.h */,
-				847BA9AA27D1EDDE002265DE /* StaticClass.m */,
+				847BA9A927D1EDDE002265DE /* DDNDataManager.h */,
+				847BA9AA27D1EDDE002265DE /* DDNDataManager.m */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -215,7 +215,7 @@
 				6889A5551CEED25800A45114 /* ViewController.m in Sources */,
 				C425689A23151553001EE600 /* AppDelegate.m in Sources */,
 				848AAE5C27C8A64B00DFFCCB /* ResultViewController.m in Sources */,
-				847BA9AB27D1EDDE002265DE /* StaticClass.m in Sources */,
+				847BA9AB27D1EDDE002265DE /* DDNDataManager.m in Sources */,
 				847BA9A827D1E7C2002265DE /* QuadEditViewController.m in Sources */,
 				6889A54F1CEED25800A45114 /* main.m in Sources */,
 			);

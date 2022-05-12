@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface StaticClass : NSObject
+@interface DDNDataManager : NSObject
 
 @property (nonatomic, strong) DynamsoftDocumentNormalizer *ddn;
 
@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) iImageData *imageData; 
 
-+ (StaticClass *)instance;
++ (DDNDataManager *)instance;
 
 @end
 

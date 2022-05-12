@@ -7,7 +7,7 @@
 //
 
 #import "QuadEditViewController.h"
-#import "StaticClass.h"
+#import "DDNDataManager.h"
 #import <DynamsoftCameraEnhancer/DynamsoftCameraEnhancer.h>
 
 @interface QuadEditViewController ()
@@ -27,12 +27,12 @@
 
 - (void)configImageEditorView {
     editorView = [[DCEImageEditorView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [editorView setOriginalImage:[StaticClass instance].imageData];
+    [editorView setOriginalImage:[DDNDataManager instance].imageData];
     
     layer = [editorView getDrawingLayer:DDN_LAYER_ID];
     
     NSMutableArray<DrawingItem *> *array = [NSMutableArray array];
-    for (iDetectedQuadResult *detectedQuadResult in [StaticClass instance].quadArr) {
+    for (iDetectedQuadResult *detectedQuadResult in [DDNDataManager instance].quadArr) {
         iQuadrilateral *quad = detectedQuadResult.location;
         QuadDrawingItem *quadItem = [[QuadDrawingItem alloc] initWithQuad:quad];
         [array addObject:quadItem];
@@ -62,9 +62,9 @@
     }
     
     NSError *error;
-    iNormalizedImageResult *imageData = [[StaticClass instance].ddn normalizeBuffer:[StaticClass instance].imageData quad:item.quad error:&error];
+    iNormalizedImageResult *imageData = [[DDNDataManager instance].ddn normalizeBuffer:[DDNDataManager instance].imageData quad:item.quad error:&error];
     
-    [StaticClass instance].resultImage = imageData.image.toUIImage;
+    [DDNDataManager instance].resultImage = [imageData.image toUIImage:&error];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self performSegueWithIdentifier:@"pushResultView" sender:nil];
     });

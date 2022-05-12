@@ -6,12 +6,12 @@
 //  Copyright © 2022 dynamsoft. All rights reserved.
 //
 
-#import "StaticClass.h"
+#import "DDNDataManager.h"
 
-@implementation StaticClass
+@implementation DDNDataManager
 
-+ (StaticClass *)instance{
-    static StaticClass *instance = nil;
++ (DDNDataManager *)instance{
+    static DDNDataManager *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [super allocWithZone:NULL];

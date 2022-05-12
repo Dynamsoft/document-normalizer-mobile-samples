@@ -2,7 +2,7 @@
 #import "ViewController.h"
 #import <DynamsoftDocumentNormalizer/DynamsoftDocumentNormalizer.h>
 #import <DynamsoftCameraEnhancer/DynamsoftCameraEnhancer.h>
-#import "StaticClass.h"
+#import "DDNDataManager.h"
 
 @interface ViewController ()<DetectResultListener>
 
@@ -26,17 +26,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[StaticClass instance].ddn startDetecting];
+    [[DDNDataManager instance].ddn startDetecting];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[StaticClass instance].ddn stopDetecting];
+    [[DDNDataManager instance].ddn stopDetecting];
 }
 
 - (void)configDDN{
-    [StaticClass instance].ddn = [DynamsoftDocumentNormalizer new];
+    [DDNDataManager instance].ddn = [DynamsoftDocumentNormalizer new];
 }
 
 - (void)configDCE{
@@ -47,8 +47,8 @@
 
     _dce = [[DynamsoftCameraEnhancer alloc] initWithView:_dceView];
     [_dce open];
-    [[StaticClass instance].ddn setCameraEnhancer:_dce];
-    [[StaticClass instance].ddn setDetectResultListener:self];
+    [[DDNDataManager instance].ddn setCameraEnhancer:_dce];
+    [[DDNDataManager instance].ddn setDetectResultListener:self];
 }
 
 - (void)configUI{
@@ -73,8 +73,8 @@
     if (isview && results) {
         isview = false;
         
-        [StaticClass instance].quadArr = results;
-        [StaticClass instance].imageData = imageData;
+        [DDNDataManager instance].quadArr = results;
+        [DDNDataManager instance].imageData = imageData;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self performSegueWithIdentifier:@"pushQuadEditView" sender:nil];
