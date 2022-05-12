@@ -11,18 +11,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    //[DynamsoftLicenseManager initLicense:@"DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" verificationDelegate:self];
+    [DynamsoftLicenseManager initLicense:@"DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" verificationDelegate:self];
     
     return YES;
 }
 
-- (void)LicenseVerificationCallback:(bool)isSuccess error:(NSError *)error
+- (void)licenseVerificationCallback:(BOOL)isSuccess error:(NSError *)error
 {
-    [self verificationCallback:error];
-}
-
-- (void)verificationCallback:(NSError *)error{
-    
     NSString* msg = @"";
     if(error != nil)
     {

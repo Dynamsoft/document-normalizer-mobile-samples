@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import DynamsoftCore
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, LicenseVerificationListener {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        DynamsoftLicenseManager.initLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", verificationDelegate: self)
         return true
     }
 
@@ -33,6 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    @objc func licenseVerificationCallback(_ isSuccess: Bool, error: Error?) {
+        var msg:String? = nil
+        if(error != nil)
+        {
+            let err = error as NSError?
+            msg = err!.userInfo[NSUnderlyingErrorKey] as? String
+            print("Server license verify falied: ", msg ?? "")
+        }
+    }
 }
 
