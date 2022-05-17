@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LicenseVerificationListen
         {
             let err = error as NSError?
             msg = err!.userInfo[NSUnderlyingErrorKey] as? String
-            print("Server license verify falied: ", msg ?? "")
+            print("Server license verify failed: ", msg ?? "")
         }
     }
 }
