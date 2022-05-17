@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LicenseVerificationListen
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-    @objc func licenseVerificationCallback(_ isSuccess: Bool, error: Error?) {
+    func licenseVerificationCallback(_ isSuccess: Bool, error: Error?) {
         var msg:String? = nil
         if(error != nil)
         {
