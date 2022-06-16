@@ -29,8 +29,8 @@ android {
 
 
 dependencies {
-    implementation 'com.dynamsoft:dynamsoftdocumentnormalizer:1.0.0@aar'
-    implementation 'com.dynamsoft:dynamsoftcameraenhancer:3.0.0@aar'
+    implementation 'com.dynamsoft:dynamsoftdocumentnormalizer:1.0.0'
+    implementation 'com.dynamsoft:dynamsoftcameraenhancer:3.0.0'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
