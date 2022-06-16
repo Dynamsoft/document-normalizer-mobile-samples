@@ -6,23 +6,21 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 
 ### Android
 
-- Operating systems:
-  - Supported OS: Android 5 or higher (Android 7 or higher recommended)
-  - Supported ABI: armeabi-v7a, arm64-v8a, x86, x86_64
-- Environment: Android Studio 3.4+
+- Supported OS: <a href="https://developer.android.com/about/versions/lollipop" target="_blank">Android 5.0 (API Level 21)</a> or higher.
+- Supported ABI: **armeabi-v7a**, **arm64-v8a**, **x86** and **x86_64**.
+- Development Environment: Android Studio 3.4+ (Android Studio 4.2+ recommended).
 
 ### iOS
 
-- Operating systems:
-  - iOS 9.0 and above.
-- Environment: Xcode 7.1 - 11.5 and above.
-- Recommended: macOS 10.15.4+, Xcode 11.5+, iOS 11+, CocoaPods 1.11.0
+- Supported OS: **iOS 11.0** or higher.
+- Supported ABI: **arm64** and **x86_64**.
+- Development Environment: Xcode 7.1 and above (Xcode 13.0+ recommended), CocoaPods 1.11.0+
 
 ## Samples
 
 | Sample Name | Description | Programming Language(s) |
 | ----------- | ----------- | ----------------------- |
-| `HelloWorld` | This is a sample that illustrates the simplest way to detect quad from video streaming with Dynamsoft Document Normalizer SDK and Dynamsoft Camera Enhancer SDK. | Java(Android)/Objective-C/Swift |
+| `HelloWorld` | This is a sample that illustrates the simplest way to detect quad from video streaming and perform image normalization with Dynamsoft Document Normalizer SDK and Dynamsoft Camera Enhancer SDK. | Java(Android)/Objective-C/Swift |
 
 ### How to build (For iOS Editions)
 
@@ -38,7 +36,7 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 
 #### Include the Framework Manually
 
-1. Download the Dynamsoft Document Normalizer SDK from <a href="https://www.dynamsoft.com/document-normalizer/downloads/?utm_source=docs" target="_blank">Dynamsoft website</a>.
+1. Download the Dynamsoft Document Normalizer SDK from <a href="https://download2.dynamsoft.com/ddn/dynamsoft-document-normalizer-ios-1.0.0.zip" target="_blank">Dynamsoft website</a>.
 
 2. Drag and drop the `DynamsoftDocumentNormalizer.framework`, `DynamsoftCore.framewrok`, `DynamsoftImageProcessing.framework`, `DynamsoftIntermediaResult.framework` and `DynamsoftCameraEnhancer.framework` into your Xcode project. Make sure to check `Copy items if needed` and `Create groups` to copy the framework into your projects' folder.
 
