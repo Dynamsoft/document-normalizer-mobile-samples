@@ -356,7 +356,10 @@
 				DEVELOPMENT_TEAM = W6PESGXW9M;
 				ENABLE_BITCODE = YES;
 				EXCLUDED_ARCHS = "";
-				FRAMEWORK_SEARCH_PATHS = ../../../Frameworks/;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../../../Frameworks,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -387,7 +390,10 @@
 				DEVELOPMENT_TEAM = W6PESGXW9M;
 				ENABLE_BITCODE = YES;
 				EXCLUDED_ARCHS = "";
-				FRAMEWORK_SEARCH_PATHS = ../../../Frameworks/;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../../../Frameworks,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

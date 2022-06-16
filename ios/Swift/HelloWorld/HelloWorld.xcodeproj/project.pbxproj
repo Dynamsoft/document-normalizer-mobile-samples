@@ -355,7 +355,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W6PESGXW9M;
 				EXCLUDED_ARCHS = "";
-				FRAMEWORK_SEARCH_PATHS = ../../../Frameworks;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../../../Frameworks,
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -388,7 +391,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W6PESGXW9M;
 				EXCLUDED_ARCHS = "";
-				FRAMEWORK_SEARCH_PATHS = ../../../Frameworks;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../../../Frameworks,
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
