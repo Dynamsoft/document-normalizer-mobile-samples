@@ -29,13 +29,8 @@ android {
 
 
 dependencies {
-    implementation fileTree(include: ['*.aar'], dir: '../../../Libs')
-
-    def camerax_version = '1.1.0-rc01'
-    implementation "androidx.camera:camera-core:$camerax_version"
-    implementation "androidx.camera:camera-camera2:$camerax_version"
-    implementation "androidx.camera:camera-lifecycle:$camerax_version"
-    implementation "androidx.camera:camera-view:$camerax_version"
+    implementation 'com.dynamsoft:dynamsoftdocumentnormalizer:1.0.0@aar'
+    implementation 'com.dynamsoft:dynamsoftcameraenhancer:3.0.0@aar'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
