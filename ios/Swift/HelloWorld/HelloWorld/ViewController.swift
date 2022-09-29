@@ -43,7 +43,7 @@ class ViewController: UIViewController, DetectResultListener {
         
         dce = DynamsoftCameraEnhancer(view: dceView)
         dce.open()
-        DDNDataManager.instance.ddn.setCameraEnhancer(dce)
+        DDNDataManager.instance.ddn.setImageSource(dce)
         DDNDataManager.instance.ddn.setDetectResultListener(self)
     }
 
