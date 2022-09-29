@@ -16,35 +16,7 @@
 		683E210C2825355B00BFF811 /* QuadEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E210B2825355B00BFF811 /* QuadEditViewController.swift */; };
 		683E210E2825357500BFF811 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E210D2825357500BFF811 /* ResultViewController.swift */; };
 		683E2110282535A000BFF811 /* DDNDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E210F282535A000BFF811 /* DDNDataManager.swift */; };
-		683E21172825395900BFF811 /* DynamsoftCameraEnhancer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21122825395800BFF811 /* DynamsoftCameraEnhancer.framework */; platformFilter = ios; };
-		683E21182825395900BFF811 /* DynamsoftCameraEnhancer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21122825395800BFF811 /* DynamsoftCameraEnhancer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		683E21192825395900BFF811 /* DynamsoftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21132825395800BFF811 /* DynamsoftCore.framework */; platformFilter = ios; };
-		683E211A2825395900BFF811 /* DynamsoftCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21132825395800BFF811 /* DynamsoftCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		683E211B2825395900BFF811 /* DynamsoftImageProcessing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21142825395900BFF811 /* DynamsoftImageProcessing.framework */; platformFilter = ios; };
-		683E211C2825395900BFF811 /* DynamsoftImageProcessing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21142825395900BFF811 /* DynamsoftImageProcessing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		683E211D2825395900BFF811 /* DynamsoftIntermediateResult.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21152825395900BFF811 /* DynamsoftIntermediateResult.framework */; platformFilter = ios; };
-		683E211E2825395900BFF811 /* DynamsoftIntermediateResult.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21152825395900BFF811 /* DynamsoftIntermediateResult.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		683E211F2825395900BFF811 /* DynamsoftDocumentNormalizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21162825395900BFF811 /* DynamsoftDocumentNormalizer.framework */; platformFilter = ios; };
-		683E21202825395900BFF811 /* DynamsoftDocumentNormalizer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 683E21162825395900BFF811 /* DynamsoftDocumentNormalizer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		683E21212825395900BFF811 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				683E211E2825395900BFF811 /* DynamsoftIntermediateResult.framework in Embed Frameworks */,
-				683E211C2825395900BFF811 /* DynamsoftImageProcessing.framework in Embed Frameworks */,
-				683E21182825395900BFF811 /* DynamsoftCameraEnhancer.framework in Embed Frameworks */,
-				683E21202825395900BFF811 /* DynamsoftDocumentNormalizer.framework in Embed Frameworks */,
-				683E211A2825395900BFF811 /* DynamsoftCore.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		683E20F42825346000BFF811 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,11 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				683E211D2825395900BFF811 /* DynamsoftIntermediateResult.framework in Frameworks */,
-				683E211B2825395900BFF811 /* DynamsoftImageProcessing.framework in Frameworks */,
-				683E21172825395900BFF811 /* DynamsoftCameraEnhancer.framework in Frameworks */,
-				683E211F2825395900BFF811 /* DynamsoftDocumentNormalizer.framework in Frameworks */,
-				683E21192825395900BFF811 /* DynamsoftCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +104,6 @@
 				683E20F02825346000BFF811 /* Sources */,
 				683E20F12825346000BFF811 /* Frameworks */,
 				683E20F22825346000BFF811 /* Resources */,
-				683E21212825395900BFF811 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -355,7 +321,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W6PESGXW9M;
 				EXCLUDED_ARCHS = "";
-				FRAMEWORK_SEARCH_PATHS = ../../../Frameworks;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../../../Frameworks,
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -388,7 +357,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W6PESGXW9M;
 				EXCLUDED_ARCHS = "";
-				FRAMEWORK_SEARCH_PATHS = ../../../Frameworks;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../../../Frameworks,
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
