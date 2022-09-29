@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Bind the Camera Enhancer instance to the Document Normalizer instance.
-        mNormalizer.setCameraEnhancer(mCamera);
+        mNormalizer.setImageSource(mCamera);
 
         // Register the detect result listener to get the detected quads from images.
         mNormalizer.setDetectResultListener(new DetectResultListener() {
