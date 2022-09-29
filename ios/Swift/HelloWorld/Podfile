@@ -6,7 +6,7 @@ target 'HelloWorld' do
   use_frameworks!
 
   # Pods for HelloWorld
-pod 'DynamsoftCameraEnhancer','3.0.0'
-pod 'DynamsoftDocumentNormalizer','1.0.0'
+pod 'DynamsoftCameraEnhancer','3.0.1'
+pod 'DynamsoftDocumentNormalizer','1.0.10'
 
 end
