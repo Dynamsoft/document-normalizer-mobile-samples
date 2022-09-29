@@ -58,11 +58,6 @@
 		683E210B2825355B00BFF811 /* QuadEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadEditViewController.swift; sourceTree = "<group>"; };
 		683E210D2825357500BFF811 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		683E210F282535A000BFF811 /* DDNDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DDNDataManager.swift; path = HelloWorld/DDNDataManager.swift; sourceTree = SOURCE_ROOT; };
-		683E21122825395800BFF811 /* DynamsoftCameraEnhancer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftCameraEnhancer.framework; path = ../../../Frameworks/DynamsoftCameraEnhancer.framework; sourceTree = "<group>"; };
-		683E21132825395800BFF811 /* DynamsoftCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftCore.framework; path = ../../../Frameworks/DynamsoftCore.framework; sourceTree = "<group>"; };
-		683E21142825395900BFF811 /* DynamsoftImageProcessing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftImageProcessing.framework; path = ../../../Frameworks/DynamsoftImageProcessing.framework; sourceTree = "<group>"; };
-		683E21152825395900BFF811 /* DynamsoftIntermediateResult.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftIntermediateResult.framework; path = ../../../Frameworks/DynamsoftIntermediateResult.framework; sourceTree = "<group>"; };
-		683E21162825395900BFF811 /* DynamsoftDocumentNormalizer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftDocumentNormalizer.framework; path = ../../../Frameworks/DynamsoftDocumentNormalizer.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,13 +112,7 @@
 		};
 		683E21112825395800BFF811 /* Frameworks */ = {
 			isa = PBXGroup;
-			children = (
-				683E21122825395800BFF811 /* DynamsoftCameraEnhancer.framework */,
-				683E21132825395800BFF811 /* DynamsoftCore.framework */,
-				683E21162825395900BFF811 /* DynamsoftDocumentNormalizer.framework */,
-				683E21142825395900BFF811 /* DynamsoftImageProcessing.framework */,
-				683E21152825395900BFF811 /* DynamsoftIntermediateResult.framework */,
-			);
+			children = ();
 			name = Frameworks;
 			sourceTree = "<group>";
 		};

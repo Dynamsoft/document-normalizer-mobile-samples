@@ -29,7 +29,8 @@ android {
 
 
 dependencies {
-    implementation fileTree(include: ['*.aar'], dir: '../../../Libs')
+    implementation 'com.dynamsoft:dynamsoftdocumentnormalizer:1.0.10'
+    implementation 'com.dynamsoft:dynamsoftcameraenhancer:3.0.1'
 
     def camerax_version = '1.1.0'
     implementation "androidx.camera:camera-core:$camerax_version"
