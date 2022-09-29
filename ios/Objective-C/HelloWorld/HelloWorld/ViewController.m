@@ -47,7 +47,7 @@
 
     _dce = [[DynamsoftCameraEnhancer alloc] initWithView:_dceView];
     [_dce open];
-    [[DDNDataManager instance].ddn setCameraEnhancer:_dce];
+    [[DDNDataManager instance].ddn setImageSource:_dce];
     [[DDNDataManager instance].ddn setDetectResultListener:self];
 }
 
