@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             public void detectResultCallback(int id, ImageData imageData, DetectedQuadResult[] results) {
                 if (results != null && results.length > 0 && ifNeedToQuadEdit) {
                     ifNeedToQuadEdit = false;
-
+                    imageData.bytes = imageData.bytes.clone();
                     mImageData = imageData;
                     mQuadResults = results;
 
