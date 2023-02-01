@@ -7,16 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0ABBEF51297008D600F3BD51 /* DynamsoftImageProcessing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842D809A281B89F90029DFF0 /* DynamsoftImageProcessing.framework */; };
-		0ABBEF52297008D600F3BD51 /* DynamsoftImageProcessing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 842D809A281B89F90029DFF0 /* DynamsoftImageProcessing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0ABBEF53297008D600F3BD51 /* DynamsoftIntermediateResult.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842D809B281B89F90029DFF0 /* DynamsoftIntermediateResult.framework */; };
-		0ABBEF54297008D600F3BD51 /* DynamsoftIntermediateResult.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 842D809B281B89F90029DFF0 /* DynamsoftIntermediateResult.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0ABBEF55297008D600F3BD51 /* DynamsoftCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8484E28227C4BBB7004B4807 /* DynamsoftCore.framework */; };
-		0ABBEF56297008D600F3BD51 /* DynamsoftCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8484E28227C4BBB7004B4807 /* DynamsoftCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0ABBEF57297008D600F3BD51 /* DynamsoftDocumentNormalizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8484E28127C4BBB7004B4807 /* DynamsoftDocumentNormalizer.framework */; };
-		0ABBEF58297008D600F3BD51 /* DynamsoftDocumentNormalizer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8484E28127C4BBB7004B4807 /* DynamsoftDocumentNormalizer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0ABBEF59297008D600F3BD51 /* DynamsoftCameraEnhancer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8429C9D1276B3D4D00C95E4B /* DynamsoftCameraEnhancer.framework */; };
-		0ABBEF5A297008D600F3BD51 /* DynamsoftCameraEnhancer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8429C9D1276B3D4D00C95E4B /* DynamsoftCameraEnhancer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6889A54F1CEED25800A45114 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6889A54E1CEED25800A45114 /* main.m */; };
 		6889A5551CEED25800A45114 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6889A5541CEED25800A45114 /* ViewController.m */; };
 		6889A5581CEED25800A45114 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6889A5561CEED25800A45114 /* Main.storyboard */; };
@@ -28,24 +18,6 @@
 		C425689A23151553001EE600 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C425689923151553001EE600 /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		0ABBEF5B297008D600F3BD51 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				0ABBEF5A297008D600F3BD51 /* DynamsoftCameraEnhancer.framework in Embed Frameworks */,
-				0ABBEF58297008D600F3BD51 /* DynamsoftDocumentNormalizer.framework in Embed Frameworks */,
-				0ABBEF54297008D600F3BD51 /* DynamsoftIntermediateResult.framework in Embed Frameworks */,
-				0ABBEF52297008D600F3BD51 /* DynamsoftImageProcessing.framework in Embed Frameworks */,
-				0ABBEF56297008D600F3BD51 /* DynamsoftCore.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		6889A54A1CEED25700A45114 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6889A54E1CEED25800A45114 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -55,15 +27,10 @@
 		6889A5591CEED25800A45114 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6889A55C1CEED25800A45114 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6889A55E1CEED25800A45114 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8429C9D1276B3D4D00C95E4B /* DynamsoftCameraEnhancer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftCameraEnhancer.framework; path = ../../../Frameworks/DynamsoftCameraEnhancer.framework; sourceTree = "<group>"; };
-		842D809A281B89F90029DFF0 /* DynamsoftImageProcessing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftImageProcessing.framework; path = ../../../Frameworks/DynamsoftImageProcessing.framework; sourceTree = "<group>"; };
-		842D809B281B89F90029DFF0 /* DynamsoftIntermediateResult.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftIntermediateResult.framework; path = ../../../Frameworks/DynamsoftIntermediateResult.framework; sourceTree = "<group>"; };
 		847BA9A627D1E7C2002265DE /* QuadEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuadEditViewController.h; sourceTree = "<group>"; };
 		847BA9A727D1E7C2002265DE /* QuadEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuadEditViewController.m; sourceTree = "<group>"; };
 		847BA9A927D1EDDE002265DE /* DDNDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDNDataManager.h; sourceTree = "<group>"; };
 		847BA9AA27D1EDDE002265DE /* DDNDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDNDataManager.m; sourceTree = "<group>"; };
-		8484E28127C4BBB7004B4807 /* DynamsoftDocumentNormalizer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftDocumentNormalizer.framework; path = ../../../Frameworks/DynamsoftDocumentNormalizer.framework; sourceTree = "<group>"; };
-		8484E28227C4BBB7004B4807 /* DynamsoftCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamsoftCore.framework; path = ../../../Frameworks/DynamsoftCore.framework; sourceTree = "<group>"; };
 		848AAE5A27C8A64B00DFFCCB /* ResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		848AAE5B27C8A64B00DFFCCB /* ResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
 		C425689923151553001EE600 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -75,11 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0ABBEF59297008D600F3BD51 /* DynamsoftCameraEnhancer.framework in Frameworks */,
-				0ABBEF57297008D600F3BD51 /* DynamsoftDocumentNormalizer.framework in Frameworks */,
-				0ABBEF53297008D600F3BD51 /* DynamsoftIntermediateResult.framework in Frameworks */,
-				0ABBEF51297008D600F3BD51 /* DynamsoftImageProcessing.framework in Frameworks */,
-				0ABBEF55297008D600F3BD51 /* DynamsoftCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +54,7 @@
 				6889A54C1CEED25800A45114 /* HelloWorld */,
 				6889A54B1CEED25700A45114 /* Products */,
 				68BA8B7020E20BD100A2737D /* Frameworks */,
+				856E40A63F551E15B5CC1830 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,13 +91,18 @@
 		68BA8B7020E20BD100A2737D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				842D809A281B89F90029DFF0 /* DynamsoftImageProcessing.framework */,
-				842D809B281B89F90029DFF0 /* DynamsoftIntermediateResult.framework */,
-				8484E28227C4BBB7004B4807 /* DynamsoftCore.framework */,
-				8484E28127C4BBB7004B4807 /* DynamsoftDocumentNormalizer.framework */,
-				8429C9D1276B3D4D00C95E4B /* DynamsoftCameraEnhancer.framework */,
+				B4FDCEBF384F57F3744BF724 /* Pods_HelloWorld.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		856E40A63F551E15B5CC1830 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C24A9280FC2A90D1EEDA8D6D /* Pods-HelloWorld.debug.xcconfig */,
+				96EEF0CB7458259650CE9C33 /* Pods-HelloWorld.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,10 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6889A5611CEED25800A45114 /* Build configuration list for PBXNativeTarget "HelloWorld" */;
 			buildPhases = (
+				70FC86702A1FF132B96CA172 /* [CP] Check Pods Manifest.lock */,
 				6889A5461CEED25700A45114 /* Sources */,
 				6889A5471CEED25700A45114 /* Frameworks */,
 				6889A5481CEED25700A45114 /* Resources */,
-				0ABBEF5B297008D600F3BD51 /* Embed Frameworks */,
+				90C5A69DDC97D8165E86DFB9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -345,6 +314,7 @@
 		};
 		6889A5621CEED25800A45114 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C24A9280FC2A90D1EEDA8D6D /* Pods-HelloWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
@@ -376,6 +346,7 @@
 		};
 		6889A5631CEED25800A45114 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96EEF0CB7458259650CE9C33 /* Pods-HelloWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
