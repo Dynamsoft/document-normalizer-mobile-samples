@@ -2,7 +2,7 @@
 //  DDNDataManager.swift
 //  HelloWorld
 //
-//  Created by dynamsoft on 2022/5/6.
+//  Copyright © Dynamsoft. All rights reserved.
 //
 
 import Foundation
