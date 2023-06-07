@@ -18,6 +18,19 @@
 		C425689A23151553001EE600 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C425689923151553001EE600 /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0A0F6A862A301E8300D2FCFE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6889A54A1CEED25700A45114 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6889A54E1CEED25800A45114 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -54,7 +67,6 @@
 				6889A54C1CEED25800A45114 /* HelloWorld */,
 				6889A54B1CEED25700A45114 /* Products */,
 				68BA8B7020E20BD100A2737D /* Frameworks */,
-				856E40A63F551E15B5CC1830 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,18 +103,8 @@
 		68BA8B7020E20BD100A2737D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B4FDCEBF384F57F3744BF724 /* Pods_HelloWorld.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		856E40A63F551E15B5CC1830 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C24A9280FC2A90D1EEDA8D6D /* Pods-HelloWorld.debug.xcconfig */,
-				96EEF0CB7458259650CE9C33 /* Pods-HelloWorld.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,11 +114,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6889A5611CEED25800A45114 /* Build configuration list for PBXNativeTarget "HelloWorld" */;
 			buildPhases = (
-				70FC86702A1FF132B96CA172 /* [CP] Check Pods Manifest.lock */,
 				6889A5461CEED25700A45114 /* Sources */,
 				6889A5471CEED25700A45114 /* Frameworks */,
 				6889A5481CEED25700A45114 /* Resources */,
-				90C5A69DDC97D8165E86DFB9 /* [CP] Embed Pods Frameworks */,
+				0A0F6A862A301E8300D2FCFE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -314,7 +315,6 @@
 		};
 		6889A5621CEED25800A45114 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C24A9280FC2A90D1EEDA8D6D /* Pods-HelloWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
@@ -346,7 +346,6 @@
 		};
 		6889A5631CEED25800A45114 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96EEF0CB7458259650CE9C33 /* Pods-HelloWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";

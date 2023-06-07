@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,19 @@
 		683E210E2825357500BFF811 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E210D2825357500BFF811 /* ResultViewController.swift */; };
 		683E2110282535A000BFF811 /* DDNDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E210F282535A000BFF811 /* DDNDataManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0A0F6A9B2A301F2B00D2FCFE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		683E20F42825346000BFF811 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,7 +49,8 @@
 		683E20F12825346000BFF811 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
-			files = ();
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -78,7 +92,8 @@
 		};
 		683E21112825395800BFF811 /* Frameworks */ = {
 			isa = PBXGroup;
-			children = ();
+			children = (
+			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
@@ -92,6 +107,7 @@
 				683E20F02825346000BFF811 /* Sources */,
 				683E20F12825346000BFF811 /* Frameworks */,
 				683E20F22825346000BFF811 /* Resources */,
+				0A0F6A9B2A301F2B00D2FCFE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
