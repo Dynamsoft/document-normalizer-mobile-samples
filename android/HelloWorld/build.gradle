@@ -19,6 +19,10 @@ allprojects {
         google()
         mavenCentral()
         mavenLocal()
+        maven {
+            url "http://192.168.8.101:8081/repository/maven-dynamsoft-public/"
+            allowInsecureProtocol true
+        }
         maven { url "https://download2.dynamsoft.com/maven/aar" }
     }
     ext {

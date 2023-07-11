@@ -49,7 +49,6 @@ public class EditFragment extends Fragment {
                 Toast.makeText(requireActivity(), "Please selected an item.", Toast.LENGTH_SHORT).show();
                 return;
             }
-            Log.e("TAG", "onViewCreated: "+selectedItem.getQuad());
             viewModel.colourNormalizedImageData = normalizeImageDataByQuad(viewModel.cvr, viewModel.capturedImageData, selectedItem.getQuad());
             requireActivity().runOnUiThread(() ->
                     NavHostFragment.findNavController(EditFragment.this)
