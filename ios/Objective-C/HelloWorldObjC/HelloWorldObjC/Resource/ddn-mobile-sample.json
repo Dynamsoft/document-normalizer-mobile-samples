@@ -1,0 +1,635 @@
+{
+	"CaptureVisionTemplates" : 
+	[
+		{
+			"ImageROIProcessingNameArray" : 
+			[
+				"normalize-document-roi"
+			],
+			"ImageSource" : "",
+			"MaxParallelTasks" : 4,
+			"Name" : "normalize-document",
+			"OutputRawImage" : 0,
+			"SemanticProcessingNameArray" : null,
+			"Timeout" : 10000
+		},
+		{
+			"ImageROIProcessingNameArray" : 
+			[
+				"normalize-document-roi-grayscale"
+			],
+			"ImageSource" : "",
+			"MaxParallelTasks" : 4,
+			"Name" : "normalize-document-grayscale",
+			"OutputRawImage" : 0,
+			"SemanticProcessingNameArray" : null,
+			"Timeout" : 10000
+		},
+		{
+			"ImageROIProcessingNameArray" : 
+			[
+				"normalize-document-roi-binary"
+			],
+			"ImageSource" : "",
+			"MaxParallelTasks" : 4,
+			"Name" : "normalize-document-binary",
+			"OutputRawImage" : 0,
+			"SemanticProcessingNameArray" : null,
+			"Timeout" : 10000
+		},
+		{
+			"ImageROIProcessingNameArray" : 
+			[
+				"detect-document-boundaries-roi"
+			],
+			"ImageSource" : "",
+			"MaxParallelTasks" : 4,
+			"Name" : "detect-document-boundaries",
+			"OutputRawImage" : 0,
+			"SemanticProcessingNameArray" : null,
+			"Timeout" : 10000
+		},
+		{
+			"ImageROIProcessingNameArray" : 
+			[
+				"detect-and-normalize-document-roi"
+			],
+			"ImageSource" : "",
+			"MaxParallelTasks" : 4,
+			"Name" : "detect-and-normalize-document",
+			"OutputRawImage" : 0,
+			"SemanticProcessingNameArray" : null,
+			"Timeout" : 10000
+		}
+	],
+	"DocumentNormalizerTaskSettingOptions" : 
+	[
+		{
+			"BaseDocumentNormalizerTaskSettingName" : "",
+			"Brightness" : 0,
+			"ColourMode" : "ICM_COLOUR",
+			"ContentType" : "CT_DOCUMENT",
+			"Contrast" : 0,
+			"CornerAngleRangeArray" : 
+			[
+				{
+					"MaxValue" : 110,
+					"MinValue" : 70
+				}
+			],
+			"DeskewMode" : 
+			{
+				"ContentDirection" : 0,
+				"Mode" : "DM_PERSPECTIVE_CORRECTION"
+			},
+			"LineExtractionModes" : 
+			[
+				{
+					"Mode" : "LEM_GENERAL"
+				}
+			],
+			"MaxThreadsInOneTask" : 4,
+			"Name" : "normalize-document-task",
+			"PageSize" : 
+			[
+				-1,
+				-1
+			],
+			"QuadrilateralDetectionModes" : 
+			[
+				{
+					"Mode" : "QDM_GENERAL"
+				}
+			],
+			"SectionImageParameterArray" : 
+			[
+				{
+					"ContinueWhenPartialResultsGenerated" : 1,
+					"ImageParameterName" : "ip-normalize",
+					"Section" : "ST_REGION_PREDETECTION"
+				},
+				{
+					"ContinueWhenPartialResultsGenerated" : 1,
+					"ImageParameterName" : "ip-normalize",
+					"Section" : "ST_DOCUMENT_DETECTION"
+				},
+				{
+					"ContinueWhenPartialResultsGenerated" : 1,
+					"ImageParameterName" : "ip-normalize",
+					"Section" : "ST_DOCUMENT_NORMALIZATION"
+				}
+			],
+			"StartSection" : "ST_DOCUMENT_NORMALIZATION",
+			"TerminateSetting" : 
+			{
+				"Section" : "ST_NULL",
+				"Stage" : "IRUT_NULL"
+			}
+		},
+		{
+			"BaseDocumentNormalizerTaskSettingName" : "normalize-document-task",
+			"ColourMode" : "ICM_BINARY",
+			"Name" : "normalize-document-task-binary"
+		},
+		{
+			"BaseDocumentNormalizerTaskSettingName" : "normalize-document-task",
+			"ColourMode" : "ICM_GRAYSCALE",
+			"Name" : "normalize-document-task-grayscale"
+		},
+		{
+			"BaseDocumentNormalizerTaskSettingName" : "",
+			"Brightness" : 0,
+			"ColourMode" : "ICM_COLOUR",
+			"ContentType" : "CT_DOCUMENT",
+			"Contrast" : 0,
+			"CornerAngleRangeArray" : 
+			[
+				{
+					"MaxValue" : 110,
+					"MinValue" : 70
+				}
+			],
+			"DeskewMode" : 
+			{
+				"ContentDirection" : 0,
+				"Mode" : "DM_PERSPECTIVE_CORRECTION"
+			},
+			"LineExtractionModes" : 
+			[
+				{
+					"Mode" : "LEM_GENERAL"
+				}
+			],
+			"MaxThreadsInOneTask" : 4,
+			"Name" : "detect-document-boundaries-task",
+			"PageSize" : 
+			[
+				-1,
+				-1
+			],
+			"QuadrilateralDetectionModes" : 
+			[
+				{
+					"Mode" : "QDM_GENERAL"
+				}
+			],
+			"SectionImageParameterArray" : 
+			[
+				{
+					"ContinueWhenPartialResultsGenerated" : 1,
+					"ImageParameterName" : "ip-detect",
+					"Section" : "ST_REGION_PREDETECTION"
+				},
+				{
+					"ContinueWhenPartialResultsGenerated" : 1,
+					"ImageParameterName" : "ip-detect",
+					"Section" : "ST_DOCUMENT_DETECTION"
+				},
+				{
+					"ContinueWhenPartialResultsGenerated" : 1,
+					"ImageParameterName" : "ip-detect",
+					"Section" : "ST_DOCUMENT_NORMALIZATION"
+				}
+			],
+			"StartSection" : "ST_REGION_PREDETECTION",
+			"TerminateSetting" : 
+			{
+				"Section" : "ST_DOCUMENT_DETECTION",
+				"Stage" : "IRUT_NULL"
+			}
+		},
+		{
+			"BaseDocumentNormalizerTaskSettingName" : "",
+			"Brightness" : 0,
+			"ColourMode" : "ICM_COLOUR",
+			"ContentType" : "CT_DOCUMENT",
+			"Contrast" : 0,
+			"CornerAngleRangeArray" : 
+			[
+				{
+					"MaxValue" : 110,
+					"MinValue" : 70
+				}
+			],
+			"DeskewMode" : 
+			{
+				"ContentDirection" : 0,
+				"Mode" : "DM_PERSPECTIVE_CORRECTION"
+			},
+			"LineExtractionModes" : 
+			[
+				{
+					"Mode" : "LEM_GENERAL"
+				}
+			],
+			"MaxThreadsInOneTask" : 4,
+			"Name" : "detect-and-normalize-document-task",
+			"PageSize" : 
+			[
+				-1,
+				-1
+			],
+			"QuadrilateralDetectionModes" : 
+			[
+				{
+					"Mode" : "QDM_GENERAL"
+				}
+			],
+			"SectionImageParameterArray" : 
+			[
+				{
+					"ContinueWhenPartialResultsGenerated" : 1,
+					"ImageParameterName" : "ip-detect-and-normalize",
+					"Section" : "ST_REGION_PREDETECTION"
+				},
+				{
+					"ContinueWhenPartialResultsGenerated" : 1,
+					"ImageParameterName" : "ip-detect-and-normalize",
+					"Section" : "ST_DOCUMENT_DETECTION"
+				},
+				{
+					"ContinueWhenPartialResultsGenerated" : 1,
+					"ImageParameterName" : "ip-detect-and-normalize",
+					"Section" : "ST_DOCUMENT_NORMALIZATION"
+				}
+			],
+			"StartSection" : "ST_REGION_PREDETECTION",
+			"TerminateSetting" : 
+			{
+				"Section" : "ST_NULL",
+				"Stage" : "IRUT_NULL"
+			}
+		}		
+	],
+	"GlobalParameter" : 
+	{
+		"MaxTotalImageDimension" : 0
+	},
+	"ImageParameterOptions" : 
+	[
+		{
+			"BaseImageParameterName" : "",
+			"BinarizationModes" : 
+			[
+				{
+					"BinarizationThreshold" : -1,
+					"BlockSizeX" : 0,
+					"BlockSizeY" : 0,
+					"EnableFillBinaryVacancy" : 0,
+					"GrayscaleEnhancementModesIndex" : -1,
+					"Mode" : "BM_LOCAL_BLOCK",
+					"MorphOperation" : "Erode",
+					"MorphOperationKernelSizeX" : -1,
+					"MorphOperationKernelSizeY" : -1,
+					"MorphShape" : "Rectangle",
+					"ThresholdCompensation" : 10
+				}
+			],
+			"ColourConversionModes" : 
+			[
+				{
+					"BlueChannelWeight" : -1,
+					"GreenChannelWeight" : -1,
+					"Mode" : "CICM_GENERAL",
+					"RedChannelWeight" : -1,
+					"ReferChannel" : "H_CHANNEL"
+				}
+			],
+			"GrayscaleEnhancementModes" : 
+			[
+				{
+					"Mode" : "GEM_GENERAL",
+					"Sensitivity" : -1,
+					"SharpenBlockSizeX" : -1,
+					"SharpenBlockSizeY" : -1,
+					"SmoothBlockSizeX" : -1,
+					"SmoothBlockSizeY" : -1
+				}
+			],
+			"GrayscaleTransformationModes" : 
+			[
+				{
+					"Mode" : "GTM_ORIGINAL"
+				}
+			],
+			"IfEraseTextZone" : 0,
+			"Name" : "ip-normalize",
+			"RegionPredetectionModes" : 
+			[
+				{
+					"AspectRatioRange" : "[]",
+					"FindAccurateBoundary" : 0,
+					"ForeAndBackgroundColours" : "[]",
+					"HeightRange" : "[]",
+					"ImageParameterName" : "",
+					"MeasuredByPercentage" : 1,
+					"MinImageDimension" : 262144,
+					"Mode" : "RPM_GENERAL",
+					"RelativeRegions" : "[]",
+					"Sensitivity" : 1,
+					"SpatialIndexBlockSize" : 5,
+					"WidthRange" : "[]"
+				}
+			],
+			"ScaleDownThreshold" : 2300,
+			"ScaleUpModes" : 
+			[
+				{
+					"AcuteAngleWithXThreshold" : -1,
+					"LetterHeightThreshold" : 0,
+					"Mode" : "SUM_AUTO",
+					"ModuleSizeThreshold" : 0,
+					"TargetLetterHeight" : 0,
+					"TargetModuleSize" : 0
+				}
+			],
+			"TextDetectionMode" : 
+			{
+				"CharHeightRange" : 
+				[
+					1,
+					1000,
+					1
+				],
+				"Direction" : "HORIZONTAL",
+				"MaxSpacingInALine" : -1,
+				"Mode" : "TTDM_WORD",
+				"Sensitivity" : 7
+			},
+			"TextureDetectionModes" : 
+			[
+				{
+					"Mode" : "TDM_GENERAL_WIDTH_CONCENTRATION",
+					"Sensitivity" : 5
+				}
+			]
+		},
+		{
+			"BaseImageParameterName" : "",
+			"BinarizationModes" : 
+			[
+				{
+					"BinarizationThreshold" : -1,
+					"BlockSizeX" : 0,
+					"BlockSizeY" : 0,
+					"EnableFillBinaryVacancy" : 0,
+					"GrayscaleEnhancementModesIndex" : -1,
+					"Mode" : "BM_LOCAL_BLOCK",
+					"MorphOperation" : "Erode",
+					"MorphOperationKernelSizeX" : -1,
+					"MorphOperationKernelSizeY" : -1,
+					"MorphShape" : "Rectangle",
+					"ThresholdCompensation" : 10
+				}
+			],
+			"ColourConversionModes" : 
+			[
+				{
+					"BlueChannelWeight" : -1,
+					"GreenChannelWeight" : -1,
+					"Mode" : "CICM_GENERAL",
+					"RedChannelWeight" : -1,
+					"ReferChannel" : "H_CHANNEL"
+				}
+			],
+			"GrayscaleEnhancementModes" : 
+			[
+				{
+					"Mode" : "GEM_GENERAL",
+					"Sensitivity" : -1,
+					"SharpenBlockSizeX" : -1,
+					"SharpenBlockSizeY" : -1,
+					"SmoothBlockSizeX" : -1,
+					"SmoothBlockSizeY" : -1
+				}
+			],
+			"GrayscaleTransformationModes" : 
+			[
+				{
+					"Mode" : "GTM_ORIGINAL"
+				}
+			],
+			"IfEraseTextZone" : 0,
+			"Name" : "ip-detect",
+			"RegionPredetectionModes" : 
+			[
+				{
+					"AspectRatioRange" : "[]",
+					"FindAccurateBoundary" : 0,
+					"ForeAndBackgroundColours" : "[]",
+					"HeightRange" : "[]",
+					"ImageParameterName" : "",
+					"MeasuredByPercentage" : 1,
+					"MinImageDimension" : 262144,
+					"Mode" : "RPM_GENERAL",
+					"RelativeRegions" : "[]",
+					"Sensitivity" : 1,
+					"SpatialIndexBlockSize" : 5,
+					"WidthRange" : "[]"
+				}
+			],
+			"ScaleDownThreshold" : 2300,
+			"ScaleUpModes" : 
+			[
+				{
+					"AcuteAngleWithXThreshold" : -1,
+					"LetterHeightThreshold" : 0,
+					"Mode" : "SUM_AUTO",
+					"ModuleSizeThreshold" : 0,
+					"TargetLetterHeight" : 0,
+					"TargetModuleSize" : 0
+				}
+			],
+			"TextDetectionMode" : 
+			{
+				"CharHeightRange" : 
+				[
+					1,
+					1000,
+					1
+				],
+				"Direction" : "HORIZONTAL",
+				"MaxSpacingInALine" : -1,
+				"Mode" : "TTDM_WORD",
+				"Sensitivity" : 7
+			},
+			"TextureDetectionModes" : 
+			[
+				{
+					"Mode" : "TDM_GENERAL_WIDTH_CONCENTRATION",
+					"Sensitivity" : 5
+				}
+			]
+		},
+		{
+			"BaseImageParameterName" : "",
+			"BinarizationModes" : 
+			[
+				{
+					"BinarizationThreshold" : -1,
+					"BlockSizeX" : 0,
+					"BlockSizeY" : 0,
+					"EnableFillBinaryVacancy" : 0,
+					"GrayscaleEnhancementModesIndex" : -1,
+					"Mode" : "BM_LOCAL_BLOCK",
+					"MorphOperation" : "Erode",
+					"MorphOperationKernelSizeX" : -1,
+					"MorphOperationKernelSizeY" : -1,
+					"MorphShape" : "Rectangle",
+					"ThresholdCompensation" : 10
+				}
+			],
+			"ColourConversionModes" : 
+			[
+				{
+					"BlueChannelWeight" : -1,
+					"GreenChannelWeight" : -1,
+					"Mode" : "CICM_GENERAL",
+					"RedChannelWeight" : -1,
+					"ReferChannel" : "H_CHANNEL"
+				}
+			],
+			"GrayscaleEnhancementModes" : 
+			[
+				{
+					"Mode" : "GEM_GENERAL",
+					"Sensitivity" : -1,
+					"SharpenBlockSizeX" : -1,
+					"SharpenBlockSizeY" : -1,
+					"SmoothBlockSizeX" : -1,
+					"SmoothBlockSizeY" : -1
+				}
+			],
+			"GrayscaleTransformationModes" : 
+			[
+				{
+					"Mode" : "GTM_ORIGINAL"
+				}
+			],
+			"IfEraseTextZone" : 0,
+			"Name" : "ip-detect-and-normalize",
+			"RegionPredetectionModes" : 
+			[
+				{
+					"AspectRatioRange" : "[]",
+					"FindAccurateBoundary" : 0,
+					"ForeAndBackgroundColours" : "[]",
+					"HeightRange" : "[]",
+					"ImageParameterName" : "",
+					"MeasuredByPercentage" : 1,
+					"MinImageDimension" : 262144,
+					"Mode" : "RPM_GENERAL",
+					"RelativeRegions" : "[]",
+					"Sensitivity" : 1,
+					"SpatialIndexBlockSize" : 5,
+					"WidthRange" : "[]"
+				}
+			],
+			"ScaleDownThreshold" : 2300,
+			"ScaleUpModes" : 
+			[
+				{
+					"AcuteAngleWithXThreshold" : -1,
+					"LetterHeightThreshold" : 0,
+					"Mode" : "SUM_AUTO",
+					"ModuleSizeThreshold" : 0,
+					"TargetLetterHeight" : 0,
+					"TargetModuleSize" : 0
+				}
+			],
+			"TextDetectionMode" : 
+			{
+				"CharHeightRange" : 
+				[
+					1,
+					1000,
+					1
+				],
+				"Direction" : "HORIZONTAL",
+				"MaxSpacingInALine" : -1,
+				"Mode" : "TTDM_WORD",
+				"Sensitivity" : 7
+			},
+			"TextureDetectionModes" : 
+			[
+				{
+					"Mode" : "TDM_GENERAL_WIDTH_CONCENTRATION",
+					"Sensitivity" : 5
+				}
+			]
+		}
+	],
+	"TargetROIDefOptions" : 
+	[
+		{
+			"BaseTargetROIDefName" : "",
+			"Location" : 
+			{
+				"Offset" : 
+				{
+					"MeasuredByPercentage" : 1,
+					"ReferenceObjectOriginIndex" : 0,
+					"ReferenceObjectSizeType" : "default"
+				}
+			},
+			"Name" : "normalize-document-roi",
+			"PauseFlag" : 0,
+			"TaskSettingNameArray" : 
+			[
+				"normalize-document-task"
+			]
+		},
+		{
+			"BaseTargetROIDefName" : "normalize-document-roi",
+			"Name" : "normalize-document-roi-grayscale",
+			"TaskSettingNameArray" : 
+			[
+				"normalize-document-task-grayscale"
+			]
+		},
+		{
+			"BaseTargetROIDefName" : "normalize-document-roi",
+			"Name" : "normalize-document-roi-binary",
+			"TaskSettingNameArray" : 
+			[
+				"normalize-document-task-binary"
+			]
+		},
+		{
+			"BaseTargetROIDefName" : "",
+			"Location" : 
+			{
+				"Offset" : 
+				{
+					"MeasuredByPercentage" : 1,
+					"ReferenceObjectOriginIndex" : 0,
+					"ReferenceObjectSizeType" : "default"
+				}
+			},
+			"Name" : "detect-document-boundaries-roi",
+			"PauseFlag" : 0,
+			"TaskSettingNameArray" : 
+			[
+				"detect-document-boundaries-task"
+			]
+		},
+		{
+			"BaseTargetROIDefName" : "",
+			"Location" : 
+			{
+				"Offset" : 
+				{
+					"MeasuredByPercentage" : 1,
+					"ReferenceObjectOriginIndex" : 0,
+					"ReferenceObjectSizeType" : "default"
+				}
+			},
+			"Name" : "detect-and-normalize-document-roi",
+			"PauseFlag" : 0,
+			"TaskSettingNameArray" : 
+			[
+				"detect-and-normalize-document-task"
+			]
+		}
+	]
+}
