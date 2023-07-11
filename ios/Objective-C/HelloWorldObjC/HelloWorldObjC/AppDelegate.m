@@ -31,8 +31,7 @@
     // It is recommended to initialize the License in AppDelegate
     // The license string here is a time-limited trial license. Note that network connection is required for this license to work.
     // You can also request an extension for your trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=installer&package=ios
-//    [DSLicenseManager initLicense:@"DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" verificationDelegate:self];
-    [DSLicenseManager initLicense:@"DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAwNDUyMjMwLXIxNjg1OTQ0NDAzIiwibWFpblNlcnZlclVSTCI6Imh0dHBzOi8vbXRwbC5keW5hbXNvZnQuY29tLyIsIm9yZ2FuaXphdGlvbklEIjoiMTAwNDUyMjMwIiwic3RhbmRieVNlcnZlclVSTCI6Imh0dHBzOi8vbXRwbHJlcy5keW5hbXNvZnQuY29tLyIsImNoZWNrQ29kZSI6MTA1ODc5NDQxMn0=" verificationDelegate:self];
+    [DSLicenseManager initLicense:@"DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" verificationDelegate:self];
     return YES;
 }
 
