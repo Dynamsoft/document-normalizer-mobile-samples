@@ -120,6 +120,9 @@ NSString *const DDNCustomizedTemplateNormalizeDocumentBinary = @"normalize-docum
     switch (self.ddnVideoType) {
         case EnumDDNVideoTypeScan:// Scan & Edit
         {
+            if (result.items.count == 0) {
+                return;
+            }
             if (isNeedToQuadEdit == NO) {
                 return;
             }
