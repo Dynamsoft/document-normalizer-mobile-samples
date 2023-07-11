@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">HelloWord</string>
+    <string name="app_name">app1</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="start_fragment_label">HelloWorld</string>
+    <string name="scanner_fragment_label">Scanner</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="scan_edit"><![CDATA[Scan & Edit]]></string>
+    <string name="auto_scan">Auto Scan</string>
+    <string name="edit_fragment_label">Edit</string>
+    <string name="normalize_fragment_label">Normalize</string>
+    <string name="capture">Capture</string>
+    <string name="btn_normalize">normalize</string>
+    <string name="btn_binary">Binary</string>
+    <string name="btn_grayscale">GrayScale</string>
+    <string name="btn_colour">Colour</string>
 </resources>

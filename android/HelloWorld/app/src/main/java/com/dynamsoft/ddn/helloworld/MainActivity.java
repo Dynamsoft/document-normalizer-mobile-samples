@@ -1,120 +1,62 @@
 package com.dynamsoft.ddn.helloworld;
 
+import android.os.Bundle;
+
+import com.dyanmsoft.license.LicenseManager;
+import com.dyanmsoft.license.LicenseVerificationListener;
+import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-import com.dynamsoft.core.CoreException;
-import com.dynamsoft.core.LicenseManager;
-import com.dynamsoft.core.LicenseVerificationListener;
-import com.dynamsoft.core.ImageData;
-import com.dynamsoft.dce.CameraEnhancer;
-import com.dynamsoft.dce.CameraEnhancerException;
-import com.dynamsoft.dce.DCECameraView;
-import com.dynamsoft.ddn.DetectResultListener;
-import com.dynamsoft.ddn.DetectedQuadResult;
-import com.dynamsoft.ddn.DocumentNormalizer;
-import com.dynamsoft.ddn.DocumentNormalizerException;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
+import com.dynamsoft.ddn.helloworld.databinding.ActivityMainBinding;
+
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-    public static DocumentNormalizer mNormalizer;
-    public static ImageData mImageData;
-    public static DetectedQuadResult[] mQuadResults;
+    private String LICENSE =
+            "DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAwMjU2NDAxLTEwMDgwMDUzOSIsIm1haW5TZXJ2ZXJVUkwiOiJodHRwczovL210cGwuZHluYW1zb2Z0LmNvbS8iLCJvcmdhbml6YXRpb25JRCI6IjEwMDI1NjQwMSIsInN0YW5kYnlTZXJ2ZXJVUkwiOiJodHRwczovL210cGxyZXMuZHluYW1zb2Z0LmNvbS8iLCJjaGVja0NvZGUiOjEwOTU5NDgyMzR9";
+    private AppBarConfiguration appBarConfiguration;
 
-    private DCECameraView mCameraView;
-    private CameraEnhancer mCamera;
-    private boolean ifNeedToQuadEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        // Initialize license for Dynamsoft Document Normalizer SDK.
-        // The license string here is a time-limited trial license. Note that network connection is required for this license to work.
-        // You can also request an extension for your trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=ddn&utm_source=installer&package=android
-        LicenseManager.initLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", MainActivity.this, new LicenseVerificationListener() {
-            @Override
-            public void licenseVerificationCallback(boolean isSuccess, CoreException error) {
-                if (!isSuccess) {
-                    error.printStackTrace();
-                    MainActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast ts = Toast.makeText(getBaseContext(), "error:"+ error.getErrorCode()+ " "+error.getMessage(), Toast.LENGTH_LONG);
-                            ts.show();
-                        }
-                    });
+        LicenseManager.initLicense(LICENSE, this, (isSuccess, error) -> {
+            runOnUiThread(()->{
+                if(!isSuccess) {
+                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Init license successful!", Toast.LENGTH_SHORT).show();
                 }
-            }
+            });
         });
 
-        // Add camera view for previewing video.
-        mCameraView = findViewById(R.id.camera_view);
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        // Create an instance of Dynamsoft Camera Enhancer for video streaming.
-        mCamera = new CameraEnhancer(this);
-        mCamera.setCameraView(mCameraView);
+        setSupportActionBar(binding.toolbar);
 
-        try {
-            // Create an instance of Dynamsoft Document Normalizer.
-            mNormalizer = new DocumentNormalizer();
-        } catch (DocumentNormalizerException e) {
-            e.printStackTrace();
-        }
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        // Bind the Camera Enhancer instance to the Document Normalizer instance.
-        mNormalizer.setImageSource(mCamera);
-
-        // Register the detect result listener to get the detected quads from images.
-        mNormalizer.setDetectResultListener(new DetectResultListener() {
-            @Override
-            public void detectResultCallback(int id, ImageData imageData, DetectedQuadResult[] results) {
-                if (results != null && results.length > 0 && ifNeedToQuadEdit) {
-                    ifNeedToQuadEdit = false;
-                    imageData.bytes = imageData.bytes.clone();
-                    mImageData = imageData;
-                    mQuadResults = results;
-
-                    // Start QuadEditActivity to interactively adjust bounding quads.
-                    Intent intent = new Intent(MainActivity.this, QuadEditActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        // Start video quad detecting
-        try {
-            mCamera.open();
-        } catch (CameraEnhancerException e) {
-            e.printStackTrace();
-        }
-        mNormalizer.startDetecting();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // Stop video quad detecting
-        try {
-            mCamera.close();
-        } catch (CameraEnhancerException e) {
-            e.printStackTrace();
-        }
-        mNormalizer.stopDetecting();
-    }
-
-    public void onCaptureBtnClick(View v) {
-        // Set the flag to start quad edit activity.
-        ifNeedToQuadEdit = true;
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 }
