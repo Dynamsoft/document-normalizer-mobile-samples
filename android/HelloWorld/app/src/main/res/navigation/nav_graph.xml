@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/StartFragment">
+
+    <fragment
+        android:id="@+id/StartFragment"
+        android:name="com.dynamsoft.ddn.helloworld.ui.StartFragment"
+        android:label="@string/start_fragment_label"
+        tools:layout="@layout/fragment_start">
+
+        <action
+            android:id="@+id/action_StartFragment_to_ScannerFragment"
+            app:destination="@id/ScannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ScannerFragment"
+        android:name="com.dynamsoft.ddn.helloworld.ui.ScannerFragment"
+        android:label="@string/scanner_fragment_label"
+        tools:layout="@layout/fragment_scanner">
+
+        <action
+            android:id="@+id/action_ScannerFragment_to_StartFragment"
+            app:destination="@id/StartFragment" />
+        <action
+            android:id="@+id/action_ScannerFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_ScannerFragment_to_normalizeFragment"
+            app:destination="@id/normalizeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.dynamsoft.ddn.helloworld.ui.EditFragment"
+        android:label="@string/edit_fragment_label"
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/action_editFragment_to_normalizeFragment"
+            app:destination="@id/normalizeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/normalizeFragment"
+        android:name="com.dynamsoft.ddn.helloworld.ui.NormalizeFragment"
+        android:label="@string/normalize_fragment_label"
+        tools:layout="@layout/fragment_normalize" >
+    </fragment>
+</navigation>
