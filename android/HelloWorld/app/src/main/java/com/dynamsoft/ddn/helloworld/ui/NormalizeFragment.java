@@ -1,7 +1,7 @@
 package com.dynamsoft.ddn.helloworld.ui;
 
-import static com.dynamsoft.ddn.helloworld.util.CvrUtil.normalizeImageDataByQuad;
-import static com.dynamsoft.ddn.helloworld.util.CvrUtil.normalizeInDifferentColorMode;
+import static com.dynamsoft.ddn.helloworld.utils.CvrUtil.normalizeImageDataByQuad;
+import static com.dynamsoft.ddn.helloworld.utils.CvrUtil.normalizeInDifferentColorMode;
 
 import android.os.Bundle;
 
@@ -25,18 +25,15 @@ import com.dynamsoft.ddn.helloworld.modes.ScanMode;
 public class NormalizeFragment extends Fragment {
     private FragmentNormalizeBinding binding;
     private MainViewModel viewModel;
-    private CaptureVisionRouter cvr;
 
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
-        if(viewModel.scanMode == ScanMode.AUTO_SCAN_MODE) {
+        if (viewModel.scanMode == ScanMode.AUTO_SCAN_MODE) {
             viewModel.colourNormalizedImageData = normalizeImageDataByQuad(viewModel.cvr, viewModel.capturedImageData, viewModel.filteredQuad);
         }
         viewModel.normalizedImageData.postValue(viewModel.colourNormalizedImageData);
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_normalize, container, false);
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(getViewLifecycleOwner());

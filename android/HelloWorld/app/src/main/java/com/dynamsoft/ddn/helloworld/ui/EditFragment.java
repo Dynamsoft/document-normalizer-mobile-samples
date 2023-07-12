@@ -1,6 +1,6 @@
 package com.dynamsoft.ddn.helloworld.ui;
 
-import static com.dynamsoft.ddn.helloworld.util.CvrUtil.normalizeImageDataByQuad;
+import static com.dynamsoft.ddn.helloworld.utils.CvrUtil.normalizeImageDataByQuad;
 
 import android.os.Bundle;
 
@@ -29,10 +29,7 @@ public class EditFragment extends Fragment {
     private CaptureVisionRouter cvr;
 
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit, container, false);
         binding.setViewModel(viewModel);
@@ -43,9 +40,9 @@ public class EditFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.btnNormalize.setOnClickListener(v->{
+        binding.btnNormalize.setOnClickListener(v -> {
             QuadDrawingItem selectedItem = (QuadDrawingItem) binding.imageEditorView.getSelectedDrawingItem();
-            if(selectedItem == null) {
+            if (selectedItem == null) {
                 Toast.makeText(requireActivity(), "Please selected an item.", Toast.LENGTH_SHORT).show();
                 return;
             }

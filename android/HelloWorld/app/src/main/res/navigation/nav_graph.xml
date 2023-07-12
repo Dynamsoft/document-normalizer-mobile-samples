@@ -12,6 +12,10 @@
         tools:layout="@layout/fragment_start">
 
         <action
+            app:enterAnim="@anim/enter_slide"
+            app:exitAnim="@anim/exit_slide"
+            app:popEnterAnim="@anim/enter_pop_slide"
+            app:popExitAnim="@anim/exit_pop_slide"
             android:id="@+id/action_StartFragment_to_ScannerFragment"
             app:destination="@id/ScannerFragment" />
     </fragment>
@@ -22,12 +26,17 @@
         tools:layout="@layout/fragment_scanner">
 
         <action
-            android:id="@+id/action_ScannerFragment_to_StartFragment"
-            app:destination="@id/StartFragment" />
-        <action
+            app:enterAnim="@anim/enter_slide"
+            app:exitAnim="@anim/exit_slide"
+            app:popEnterAnim="@anim/enter_pop_slide"
+            app:popExitAnim="@anim/exit_pop_slide"
             android:id="@+id/action_ScannerFragment_to_editFragment"
             app:destination="@id/editFragment" />
         <action
+            app:enterAnim="@anim/enter_slide"
+            app:exitAnim="@anim/exit_slide"
+            app:popEnterAnim="@anim/enter_pop_slide"
+            app:popExitAnim="@anim/exit_pop_slide"
             android:id="@+id/action_ScannerFragment_to_normalizeFragment"
             app:destination="@id/normalizeFragment" />
     </fragment>
@@ -37,6 +46,10 @@
         android:label="@string/edit_fragment_label"
         tools:layout="@layout/fragment_edit" >
         <action
+            app:enterAnim="@anim/enter_slide"
+            app:exitAnim="@anim/exit_slide"
+            app:popEnterAnim="@anim/enter_pop_slide"
+            app:popExitAnim="@anim/exit_pop_slide"
             android:id="@+id/action_editFragment_to_normalizeFragment"
             app:destination="@id/normalizeFragment" />
     </fragment>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.dynamsoft.ddn.helloworld.util.CvrUtil"/>
+        <import type="com.dynamsoft.ddn.helloworld.utils.CvrUtil"/>
         <variable
             name="viewModel"
             type="com.dynamsoft.ddn.helloworld.MainViewModel" />

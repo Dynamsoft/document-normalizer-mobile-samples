@@ -1,4 +1,4 @@
-package com.dynamsoft.ddn.helloworld.util;
+package com.dynamsoft.ddn.helloworld.utils;
 
 import com.dynamsoft.core.basic_structures.CaptureException;
 import com.dynamsoft.core.basic_structures.CapturedResult;
