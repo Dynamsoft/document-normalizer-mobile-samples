@@ -16,18 +16,22 @@ public class CvrUtil {
             return null;
         }
         try {
-            SimplifiedCaptureVisionSettings oldSettings = cvr.getSimplifiedSettings(EnumPresetTemplate.PT_NORMALIZE_DOCUMENT);
-            SimplifiedCaptureVisionSettings newSettings = cvr.getSimplifiedSettings(EnumPresetTemplate.PT_NORMALIZE_DOCUMENT);
+            String template = EnumPresetTemplate.PT_NORMALIZE_DOCUMENT;
+            SimplifiedCaptureVisionSettings oldSettings = cvr.getSimplifiedSettings(template);
+            SimplifiedCaptureVisionSettings newSettings = cvr.getSimplifiedSettings(template);
+
             newSettings.roi = quadrilateral;
             newSettings.roiMeasuredInPercentage = false;
-            cvr.updateSettings(newSettings, EnumPresetTemplate.PT_NORMALIZE_DOCUMENT);
-            CapturedResult result = cvr.capture(imageData, EnumPresetTemplate.PT_NORMALIZE_DOCUMENT);
-            cvr.updateSettings(oldSettings, EnumPresetTemplate.PT_NORMALIZE_DOCUMENT);
+            cvr.updateSettings(newSettings, template);
+            CapturedResult result = cvr.capture(imageData, template);
+
+            //reset settings of normalize-document template
+            cvr.updateSettings(oldSettings, template);
             if(result != null && result.getItems() != null && result.getItems().length > 0) {
                 return ((NormalizedImageResultItem) result.getItems()[0]).getImageData();
             }
         } catch (CaptureException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return null;
     }
@@ -37,19 +41,21 @@ public class CvrUtil {
         if(cvr == null || imageData == null) {
             return null;
         }
-        String templateName = EnumPresetTemplate.PT_NORMALIZE_DOCUMENT;
         try {
+            String templateName;
             if (colorMode == ColorMode.COLOR_MODE_BINARY) {
                 templateName = "normalize-document-binary";
             } else if (colorMode == ColorMode.COLOR_MODE_GRAYSCALE) {
                 templateName = "normalize-document-grayscale";
+            } else { //Colour
+                templateName = EnumPresetTemplate.PT_NORMALIZE_DOCUMENT;
             }
             CapturedResult result = cvr.capture(imageData, templateName);
             if (result != null && result.getItems() != null && result.getItems().length > 0) {
                 return ((NormalizedImageResultItem) result.getItems()[0]).getImageData();
             }
         } catch (CaptureException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return null;
     }

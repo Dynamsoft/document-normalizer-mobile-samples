@@ -29,7 +29,7 @@ public class BindingAdapter {
         view.getDrawingLayer(DrawingLayer.DDN_LAYER_ID).setDrawingItems(drawingItems);
     }
     
-    @androidx.databinding.BindingAdapter("ImageViewImage")
+    @androidx.databinding.BindingAdapter("ImageData")
     public static void loadImageDataOnImageView(ImageView view, ImageData imageData) {
         if(imageData != null) {
             try {

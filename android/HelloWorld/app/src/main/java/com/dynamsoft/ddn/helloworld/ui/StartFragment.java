@@ -17,17 +17,11 @@ import com.dynamsoft.ddn.helloworld.databinding.FragmentStartBinding;
 import com.dynamsoft.ddn.helloworld.modes.ScanMode;
 
 public class StartFragment extends Fragment {
-    private FragmentStartBinding binding;
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentStartBinding.inflate(inflater, container, false);
-        return binding.getRoot();
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         MainViewModel viewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
+        FragmentStartBinding binding = FragmentStartBinding.inflate(inflater, container, false);
         binding.btnScanEdit.setOnClickListener(v -> {
             viewModel.scanMode = ScanMode.SCAN_EDIT_MODE;
             NavHostFragment.findNavController(StartFragment.this)
@@ -38,12 +32,7 @@ public class StartFragment extends Fragment {
             NavHostFragment.findNavController(StartFragment.this)
                     .navigate(R.id.action_StartFragment_to_ScannerFragment);
         });
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+        return binding.getRoot();
     }
 
 }

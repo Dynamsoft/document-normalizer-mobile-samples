@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.dynamsoft.ddn.helloworld.modes.ColorMode"/>
         <import type="com.dynamsoft.ddn.helloworld.utils.CvrUtil"/>
         <variable
             name="viewModel"
@@ -27,37 +28,44 @@
                 android:id="@+id/btn_binary"
                 android:text="@string/btn_binary"
                 android:textAllCaps="false"
+                android:onClick="@{v->viewModel.setNormalizedImageDataByColorImageData(ColorMode.COLOR_MODE_BINARY)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginHorizontal="5dp"
-                android:layout_weight="1" />
+                style="?android:attr/button" />
 
             <Button
                 android:id="@+id/btn_grayscale"
                 android:text="@string/btn_grayscale"
                 android:textAllCaps="false"
+                android:onClick="@{v->viewModel.setNormalizedImageDataByColorImageData(ColorMode.COLOR_MODE_GRAYSCALE)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                style="?android:attr/button" />
 
             <Button
                 android:id="@+id/btn_colour"
                 android:text="@string/btn_colour"
+                android:onClick="@{v->viewModel.setNormalizedImageDataByColorImageData(ColorMode.COLOR_MODE_COLOUR)}"
                 android:textAllCaps="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                style="?android:attr/button" />
         </LinearLayout>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="16dp"
-            ImageViewImage="@{viewModel.normalizedImageData}"
+            ImageData="@{viewModel.normalizedImageData}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:contentDescription="@string/iv_normalize_description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

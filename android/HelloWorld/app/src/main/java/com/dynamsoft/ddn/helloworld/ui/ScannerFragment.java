@@ -47,10 +47,7 @@ public class ScannerFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_scanner, container, false);
         binding.setViewModel(viewModel);
@@ -68,7 +65,6 @@ public class ScannerFragment extends Fragment {
             throw new RuntimeException(e);
         }
         cvr.setInput(dce);
-
         binding.btnCapture.setOnClickListener(v -> ifNeedToQuadEdit = true);
     }
 
@@ -107,7 +103,7 @@ public class ScannerFragment extends Fragment {
                         for (int i = 0; i < result.getItems().length; i++) {
                             viewModel.capturedQuads[i] = result.getItems()[i].getLocation();
                         }
-                        viewModel.capturedImageData = cvr.getIntermediateResultManager().getRawImage(result.getSourceImageHashId());
+                        viewModel.capturedWholeImage = cvr.getIntermediateResultManager().getRawImage(result.getSourceImageHashId());
                         getActivity().runOnUiThread(() ->
                                 NavHostFragment.findNavController(ScannerFragment.this)
                                         .navigate(R.id.action_ScannerFragment_to_editFragment));
@@ -117,7 +113,7 @@ public class ScannerFragment extends Fragment {
                 //Auto Scan Mode
                 if (viewModel.scanMode == ScanMode.AUTO_SCAN_MODE) {
                     if (!ifJumpToNextFg && result.getItems().length > 0) {
-                        viewModel.capturedImageData = cvr.getIntermediateResultManager().getRawImage(result.getSourceImageHashId());
+                        viewModel.capturedWholeImage = cvr.getIntermediateResultManager().getRawImage(result.getSourceImageHashId());
                         DetectedQuadResultItem selectedItem = result.getItems()[0];
                         for (DetectedQuadResultItem item : result.getItems()) {
                             if (item.getConfidenceAsDocumentBoundary() > selectedItem.getConfidenceAsDocumentBoundary()) {
@@ -144,7 +140,7 @@ public class ScannerFragment extends Fragment {
         try {
             dce.open();
             cvr.startCapturing(EnumPresetTemplate.PT_DETECT_DOCUMENT_BOUNDARIES);
-        } catch (Exception e) {
+        } catch (CaptureException | CameraEnhancerException e) {
             e.printStackTrace();
         }
     }
@@ -154,10 +150,10 @@ public class ScannerFragment extends Fragment {
         super.onPause();
         try {
             dce.close();
-            cvr.stopCapturing();
-        } catch (Exception e) {
+        } catch (CameraEnhancerException e) {
             e.printStackTrace();
         }
+        cvr.stopCapturing();
     }
 
     @Override
