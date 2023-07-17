@@ -38,7 +38,7 @@ public class ScannerFragment extends Fragment {
     private CameraEnhancer dce;
 
     private boolean ifNeedToQuadEdit = false;
-    private boolean ifJumpToNextFg = false;
+    private boolean ifJumpToOtherFg = false;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -64,13 +64,16 @@ public class ScannerFragment extends Fragment {
         }
 
         dce = new CameraEnhancer(binding.cameraView, getViewLifecycleOwner());
-        try {
-            dce.enableEnhancedFeatures(EnumEnhancerFeatures.EF_FRAME_FILTER);
-        } catch (CameraEnhancerException e) {
-            throw new RuntimeException(e);
+        if (viewModel.scanMode == ScanMode.AUTO_SCAN_MODE) {
+            try {
+                dce.enableEnhancedFeatures(EnumEnhancerFeatures.EF_FRAME_FILTER);
+            } catch (CameraEnhancerException e) {
+                throw new RuntimeException(e);
+            }
         }
         cvr.setInput(dce);
         binding.btnCapture.setOnClickListener(v -> ifNeedToQuadEdit = true);
+
     }
 
     public void initCaptureVisionRouter() throws CaptureVisionRouterException {
@@ -109,7 +112,7 @@ public class ScannerFragment extends Fragment {
 
                 //Auto Scan Mode
                 if (viewModel.scanMode == ScanMode.AUTO_SCAN_MODE) {
-                    if (!ifJumpToNextFg && result.getItems().length > 0) {
+                    if (!ifJumpToOtherFg && result.getItems().length > 0) {
                         viewModel.capturedWholeImage = cvr.getIntermediateResultManager().getRawImage(result.getSourceImageHashId());
                         DetectedQuadResultItem selectedItem = result.getItems()[0];
                         for (DetectedQuadResultItem item : result.getItems()) {
@@ -119,7 +122,7 @@ public class ScannerFragment extends Fragment {
                         }
                         viewModel.filteredQuad = selectedItem.getLocation();
 
-                        ifJumpToNextFg = true;
+                        ifJumpToOtherFg = true;
                         getActivity().runOnUiThread(() ->
                                 NavHostFragment.findNavController(ScannerFragment.this)
                                         .navigate(R.id.action_ScannerFragment_to_normalizeFragment));
@@ -133,7 +136,7 @@ public class ScannerFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ifJumpToNextFg = false;
+        ifJumpToOtherFg = false;
         try {
             dce.open();
             cvr.startCapturing(EnumPresetTemplate.PT_DETECT_DOCUMENT_BOUNDARIES);
@@ -145,6 +148,7 @@ public class ScannerFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        ifJumpToOtherFg = true;
         try {
             dce.close();
         } catch (CameraEnhancerException e) {
