@@ -37,6 +37,8 @@ public class BindingAdapter {
             } catch (CaptureException e) {
                 e.printStackTrace();
             }
+        } else {
+            view.setImageBitmap(null);
         }
     }
 
