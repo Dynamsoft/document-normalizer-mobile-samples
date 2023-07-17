@@ -2,7 +2,7 @@ package com.dynamsoft.ddn.helloworld.ui;
 
 import android.widget.ImageView;
 
-import com.dynamsoft.core.basic_structures.CaptureException;
+import com.dynamsoft.core.basic_structures.CoreException;
 import com.dynamsoft.core.basic_structures.ImageData;
 import com.dynamsoft.core.basic_structures.Quadrilateral;
 import com.dynamsoft.dce.DrawingItem;
@@ -34,7 +34,7 @@ public class BindingAdapter {
         if(imageData != null) {
             try {
                 view.setImageBitmap(imageData.toBitmap());
-            } catch (CaptureException e) {
+            } catch (CoreException e) {
                 e.printStackTrace();
             }
         } else {

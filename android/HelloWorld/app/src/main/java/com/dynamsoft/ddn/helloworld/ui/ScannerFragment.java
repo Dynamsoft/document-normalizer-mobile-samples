@@ -12,11 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.dynamsoft.core.basic_structures.CaptureException;
 import com.dynamsoft.core.basic_structures.CapturedResultReceiver;
 import com.dynamsoft.core.basic_structures.EnumCapturedResultItemType;
 import com.dynamsoft.core.basic_structures.Quadrilateral;
 import com.dynamsoft.cvr.CaptureVisionRouter;
+import com.dynamsoft.cvr.CaptureVisionRouterException;
 import com.dynamsoft.cvr.EnumPresetTemplate;
 import com.dynamsoft.dce.CameraEnhancer;
 import com.dynamsoft.dce.CameraEnhancerException;
@@ -57,7 +57,12 @@ public class ScannerFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initCaptureVisionRouter();
+        try {
+            initCaptureVisionRouter();
+        } catch (CaptureVisionRouterException e) {
+            throw new RuntimeException(e);
+        }
+
         dce = new CameraEnhancer(binding.cameraView, getViewLifecycleOwner());
         try {
             dce.enableEnhancedFeatures(EnumEnhancerFeatures.EF_FRAME_FILTER);
@@ -68,24 +73,16 @@ public class ScannerFragment extends Fragment {
         binding.btnCapture.setOnClickListener(v -> ifNeedToQuadEdit = true);
     }
 
-    public void initCaptureVisionRouter() {
+    public void initCaptureVisionRouter() throws CaptureVisionRouterException {
         viewModel.cvr = new CaptureVisionRouter(requireActivity());
 
         cvr = viewModel.cvr;
-        try {
-            cvr.initSettingsFromFile("ddn-mobile-sample.json");
-        } catch (CaptureException e) {
-            e.printStackTrace();
-        }
+        cvr.initSettingsFromFile("ddn-mobile-sample.json");
 
         if (viewModel.scanMode == ScanMode.AUTO_SCAN_MODE) {
             MultiFrameResultCrossFilter filter = new MultiFrameResultCrossFilter();
             filter.enableResultVerification(EnumCapturedResultItemType.CRIT_DETECTED_QUAD, true);
-            try {
-                cvr.addResultFilter(filter);
-            } catch (CaptureException e) {
-                throw new RuntimeException(e);
-            }
+            cvr.addResultFilter(filter);
         }
 
         cvr.addResultReceiver(new CapturedResultReceiver() {
@@ -140,7 +137,7 @@ public class ScannerFragment extends Fragment {
         try {
             dce.open();
             cvr.startCapturing(EnumPresetTemplate.PT_DETECT_DOCUMENT_BOUNDARIES);
-        } catch (CaptureException | CameraEnhancerException e) {
+        } catch (CaptureVisionRouterException | CameraEnhancerException e) {
             e.printStackTrace();
         }
     }

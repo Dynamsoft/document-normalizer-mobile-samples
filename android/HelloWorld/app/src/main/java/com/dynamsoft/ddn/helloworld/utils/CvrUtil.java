@@ -1,10 +1,10 @@
 package com.dynamsoft.ddn.helloworld.utils;
 
-import com.dynamsoft.core.basic_structures.CaptureException;
 import com.dynamsoft.core.basic_structures.CapturedResult;
 import com.dynamsoft.core.basic_structures.ImageData;
 import com.dynamsoft.core.basic_structures.Quadrilateral;
 import com.dynamsoft.cvr.CaptureVisionRouter;
+import com.dynamsoft.cvr.CaptureVisionRouterException;
 import com.dynamsoft.cvr.EnumPresetTemplate;
 import com.dynamsoft.cvr.SimplifiedCaptureVisionSettings;
 import com.dynamsoft.ddn.NormalizedImageResultItem;
@@ -30,7 +30,7 @@ public class CvrUtil {
             if(result != null && result.getItems() != null && result.getItems().length > 0) {
                 return ((NormalizedImageResultItem) result.getItems()[0]).getImageData();
             }
-        } catch (CaptureException e) {
+        } catch (CaptureVisionRouterException e) {
             e.printStackTrace();
         }
         return null;
@@ -54,7 +54,7 @@ public class CvrUtil {
             if (result != null && result.getItems() != null && result.getItems().length > 0) {
                 return ((NormalizedImageResultItem) result.getItems()[0]).getImageData();
             }
-        } catch (CaptureException e) {
+        } catch (CaptureVisionRouterException e) {
             e.printStackTrace();
         }
         return null;
