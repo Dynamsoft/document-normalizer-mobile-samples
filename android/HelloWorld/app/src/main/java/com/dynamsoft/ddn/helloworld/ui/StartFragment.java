@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.dynamsoft.cvr.EnumPresetTemplate;
 import com.dynamsoft.ddn.helloworld.MainViewModel;
 import com.dynamsoft.ddn.helloworld.R;
 import com.dynamsoft.ddn.helloworld.databinding.FragmentStartBinding;

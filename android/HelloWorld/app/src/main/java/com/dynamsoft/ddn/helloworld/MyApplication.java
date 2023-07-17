@@ -2,6 +2,7 @@ package com.dynamsoft.ddn.helloworld;
 
 import android.app.Application;
 import android.util.Log;
+
 import com.dynamsoft.license.LicenseManager;
 
 public class MyApplication extends Application {

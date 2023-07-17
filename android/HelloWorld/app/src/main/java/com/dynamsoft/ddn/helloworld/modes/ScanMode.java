@@ -1,6 +1,7 @@
 package com.dynamsoft.ddn.helloworld.modes;
 
-import static com.dynamsoft.ddn.helloworld.modes.ScanMode.*;
+import static com.dynamsoft.ddn.helloworld.modes.ScanMode.AUTO_SCAN_MODE;
+import static com.dynamsoft.ddn.helloworld.modes.ScanMode.SCAN_EDIT_MODE;
 
 import androidx.annotation.IntDef;
 

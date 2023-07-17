@@ -1,7 +1,9 @@
 package com.dynamsoft.ddn.helloworld.modes;
 
 
-import static com.dynamsoft.ddn.helloworld.modes.ColorMode.*;
+import static com.dynamsoft.ddn.helloworld.modes.ColorMode.COLOR_MODE_BINARY;
+import static com.dynamsoft.ddn.helloworld.modes.ColorMode.COLOR_MODE_COLOUR;
+import static com.dynamsoft.ddn.helloworld.modes.ColorMode.COLOR_MODE_GRAYSCALE;
 
 import androidx.annotation.IntDef;
 

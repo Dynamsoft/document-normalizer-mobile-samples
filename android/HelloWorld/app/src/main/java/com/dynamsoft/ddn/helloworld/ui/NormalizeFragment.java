@@ -1,14 +1,14 @@
 package com.dynamsoft.ddn.helloworld.ui;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.dynamsoft.ddn.helloworld.MainViewModel;
 import com.dynamsoft.ddn.helloworld.R;
