@@ -2,9 +2,7 @@ package com.dynamsoft.ddn.helloworld;
 
 import android.app.Application;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.dyanmsoft.license.LicenseManager;
+import com.dynamsoft.license.LicenseManager;
 
 public class MyApplication extends Application {
     private static final String TAG = "MyApplication";
