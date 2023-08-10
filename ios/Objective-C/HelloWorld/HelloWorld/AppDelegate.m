@@ -1,8 +1,12 @@
+/*
+ * This is the sample of Dynamsoft Document Normalizer.
+ *
+ * Copyright © Dynamsoft Corporation.  All rights reserved.
+ */
 
 #import "AppDelegate.h"
-#import <DynamsoftCore/DynamsoftCore.h>
 
-@interface AppDelegate ()<LicenseVerificationListener>
+@interface AppDelegate ()<DSLicenseVerificationListener>
 
 @end
 
@@ -11,45 +15,49 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [DynamsoftLicenseManager initLicense:@"DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" verificationDelegate:self];
     
+    if(@available(ios 15.0,*)){
+        UINavigationBarAppearance *appearance = [UINavigationBarAppearance new];
+        [appearance configureWithOpaqueBackground];
+        appearance.backgroundColor = kNavigationBackgroundColor;
+        appearance.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+        [[UINavigationBar appearance] setStandardAppearance:appearance];
+        [[UINavigationBar appearance] setScrollEdgeAppearance:appearance];
+    }
+    
+    // It is recommended to initialize the License in AppDelegate
+    // The license string here is a time-limited trial license. Note that network connection is required for this license to work.
+    // You can also request an extension for your trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=installer&package=ios
+    [DSLicenseManager initLicense:@"DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" verificationDelegate:self];
     return YES;
 }
 
-- (void)licenseVerificationCallback:(BOOL)isSuccess error:(NSError *)error
-{
-    NSString* msg = @"";
-    if(error != nil)
-    {
-        msg = error.userInfo[NSUnderlyingErrorKey];
-        if(msg == nil)
+- (void)onLicenseVerified:(BOOL)isSuccess error:(NSError *)error {
+    [self verificationCallback:error];
+}
+
+- (void)verificationCallback:(NSError *)error{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString* msg = @"";
+        if(error != nil)
         {
-            msg = [error localizedDescription];
+            msg = error.userInfo[NSUnderlyingErrorKey];
+            if(msg == nil)
+            {
+                msg = [error localizedDescription];
+            }
+
+            __block UIWindow *topWindow = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+            topWindow.rootViewController = [[UIViewController alloc] init];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Server license verify failed" message:msg preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                topWindow.hidden = YES;
+                topWindow = nil;
+            }]];
+            [topWindow makeKeyAndVisible];
+            [topWindow.rootViewController presentViewController:alert animated:YES completion:nil];
         }
-        NSLog(@"Server license verify failed: %@", msg);
-    }
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    });
 }
 
 @end

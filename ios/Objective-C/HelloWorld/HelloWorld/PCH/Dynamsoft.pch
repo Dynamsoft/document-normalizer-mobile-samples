@@ -1,0 +1,70 @@
+/*
+ * This is the sample of Dynamsoft Document Normalizer.
+ *
+ * Copyright © Dynamsoft Corporation.  All rights reserved.
+ */
+
+#ifndef Dynamsoft_pch
+#define Dynamsoft_pch
+#import <UIKit/UIKit.h>
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+/// The width of the screen
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+
+/// The height of the screen
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+/// Determine if it's an iPhone
+#define kIs_iphone [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone
+
+/// Check if it's an iphoneX or later
+#define kIs_iPhoneXAndLater kScreenWidth >=375.0f && kScreenHeight >=812.0f&& kIs_iphone
+
+/// The height of the statusBar
+#define kStatusBarHeight (CGFloat)(kIs_iPhoneXAndLater?(44.0):(20.0))
+
+/// The height of the navigationBar and statusBar
+#define kNaviBarAndStatusBarHeight (CGFloat)(kIs_iPhoneXAndLater?(88.0):(64.0))
+
+/// The height of the tabbar
+#define kTabBarHeight (CGFloat)(kIs_iPhoneXAndLater?(49.0 + 34.0):(49.0))
+
+/// The height of the tabbar
+#define kTabBarAreaHeight (CGFloat)(kIs_iPhoneXAndLater?(34.0):(0))
+
+/// Navigation backgroundColor
+#define kNavigationBackgroundColor  [UIColor colorWithRed:59.003/255.0 green:61.9991/255.0 blue:69.0028/255.0 alpha:1]
+
+// Enums
+typedef NS_ENUM(NSInteger, EnumDDNVideoType) {
+    EnumDDNVideoTypeScan,
+    EnumDDNVideoTypeAutoScan
+};
+
+typedef NS_ENUM(NSInteger, EnumNormalizeType) {
+    EnumNormalizeTypeBinary,
+    EnumNormalizeTypeGrayscale,
+    EnumNormalizeTypeColour
+};
+
+// Frameworks
+#import <DynamsoftCore/DynamsoftCore.h>
+#import <DynamsoftLicense/DynamsoftLicense.h>
+#import <DynamsoftImageProcessing/DynamsoftImageProcessing.h>
+#import <DynamsoftDocumentNormalizer/DynamsoftDocumentNormalizer.h>
+#import <DynamsoftCaptureVisionRouter/DynamsoftCaptureVisionRouter.h>
+#import <DynamsoftCameraEnhancer/DynamsoftCameraEnhancer.h>
+#import <DynamsoftUtility/DynamsoftUtility.h>
+
+// Category
+#import "UIView+FrameAdditions.h"
+
+// ViewController
+#import "CameraViewController.h"
+#import "DDNEditorViewController.h"
+#import "DDNNormalizeViewController.h"
+
+#endif /* Dynamsoft_pch */

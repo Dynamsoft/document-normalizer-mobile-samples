@@ -1,85 +1,80 @@
+/*
+ * This is the sample of Dynamsoft Document Normalizer.
+ *
+ * Copyright © Dynamsoft Corporation.  All rights reserved.
+ */
 
 #import "ViewController.h"
-#import <DynamsoftDocumentNormalizer/DynamsoftDocumentNormalizer.h>
-#import <DynamsoftCameraEnhancer/DynamsoftCameraEnhancer.h>
-#import "DDNDataManager.h"
 
-@interface ViewController ()<DetectResultListener>
+@interface ViewController ()
 
-@property(nonatomic, strong) DynamsoftCameraEnhancer *dce;
-@property(nonatomic, strong) DCECameraView *dceView;
+@property (nonatomic, strong) UIButton *scanButton;
+
+@property (nonatomic, strong) UIButton *autoScanButton;
 
 @end
 
-@implementation ViewController{
-    UIButton *photoButton;
-    bool isview;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self configDDN];
-    [self configDCE];
-    [self configUI];
-}
+@implementation ViewController
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[DDNDataManager instance].ddn startDetecting];
+
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    [self.navigationController.navigationBar setBarTintColor:kNavigationBackgroundColor];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [[DDNDataManager instance].ddn stopDetecting];
-}
-
-- (void)configDDN{
-    [DDNDataManager instance].ddn = [DynamsoftDocumentNormalizer new];
-}
-
-- (void)configDCE{
-    _dceView = [DCECameraView cameraWithFrame:self.view.bounds];
-    [self.view addSubview:_dceView];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
     
-    [_dceView getDrawingLayer:DDN_LAYER_ID];
-
-    _dce = [[DynamsoftCameraEnhancer alloc] initWithView:_dceView];
-    [_dce open];
-    [[DDNDataManager instance].ddn setImageSource:_dce];
-    [[DDNDataManager instance].ddn setDetectResultListener:self];
-}
-
-- (void)configUI{
-    CGFloat w = [[UIScreen mainScreen] bounds].size.width;
-    CGFloat h = [[UIScreen mainScreen] bounds].size.height;
-    CGFloat SafeAreaBottomHeight = [[UIApplication sharedApplication] statusBarFrame].size.height > 20 ? 34 : 0;
+    self.title = @"HelloWorld";
+    self.view.backgroundColor = UIColor.whiteColor;
     
-    photoButton = [[UIButton alloc] initWithFrame:CGRectMake(w / 2 - 60, h - 100 - SafeAreaBottomHeight, 120, 60)];
-    [photoButton setTitle:@"Capture" forState:UIControlStateNormal];
-    [photoButton setBackgroundColor:[UIColor greenColor]];
-    [photoButton addTarget:self action:@selector(takePictures) forControlEvents:UIControlEventTouchUpInside];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.view addSubview:self->photoButton];
-    });
+    [self setupUI];
 }
 
-- (void)takePictures{
-    isview = true;
+- (void)setupUI {
+    [self.view addSubview:self.scanButton];
+    [self.view addSubview:self.autoScanButton];
 }
 
-- (void)detectResultCallback:(NSInteger)frameId imageData:(nonnull iImageData *)imageData results:(nonnull NSArray<iDetectedQuadResult *> *)results {
-    if (isview && results) {
-        isview = false;
-        
-        [DDNDataManager instance].quadArr = results;
-        [DDNDataManager instance].imageData = imageData;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self performSegueWithIdentifier:@"pushQuadEditView" sender:nil];
-        });
+- (void)scanAction:(UIButton *)button {
+    CameraViewController *cameraVC = [[CameraViewController alloc] init];
+    cameraVC.ddnVideoType = button.tag;
+    [self.navigationController pushViewController:cameraVC animated:YES];
+}
+
+// MARK: - Lazy
+- (UIButton *)scanButton {
+    if (!_scanButton) {
+        _scanButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _scanButton.frame = CGRectMake((kScreenWidth - 150) / 2.0, (kScreenHeight - 50) / 2.0 - 100, 150, 50);
+        _scanButton.backgroundColor = [UIColor grayColor];
+        _scanButton.layer.cornerRadius = 10;
+        _scanButton.layer.borderColor = [UIColor darkGrayColor].CGColor;
+        _scanButton.tag = EnumDDNVideoTypeScan;
+        [_scanButton setTitle:@"Scan & Edit" forState:UIControlStateNormal];
+        [_scanButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_scanButton addTarget:self action:@selector(scanAction:) forControlEvents:UIControlEventTouchUpInside];
     }
+    return _scanButton;
+}
+
+- (UIButton *)autoScanButton {
+    if (!_autoScanButton) {
+        _autoScanButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _autoScanButton.frame = CGRectMake((kScreenWidth - 150) / 2.0, (kScreenHeight - 50) / 2.0 + 100, 150, 50);
+        _autoScanButton.backgroundColor = [UIColor grayColor];
+        _autoScanButton.layer.cornerRadius = 10;
+        _autoScanButton.layer.borderColor = [UIColor darkGrayColor].CGColor;
+        _autoScanButton.tag = EnumDDNVideoTypeAutoScan;
+        [_autoScanButton setTitle:@"Auto Scan" forState:UIControlStateNormal];
+        [_autoScanButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_autoScanButton addTarget:self action:@selector(scanAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _autoScanButton;
 }
 
 @end

@@ -1,13 +1,11 @@
-//
-//  SceneDelegate.swift
-//  HelloWorld
-//
-//  Copyright © Dynamsoft. All rights reserved.
-//
+/*
+ * This is the sample of Dynamsoft Document Normalizer.
+ *
+ * Copyright © Dynamsoft Corporation.  All rights reserved.
+ */
 
 import UIKit
 
-@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
