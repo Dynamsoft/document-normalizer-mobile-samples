@@ -6,9 +6,9 @@
 
 #import "CameraViewController.h"
 
-NSString *const DDNCustomizedTemplateDetectDocumentBoundaries = @"detect-document-boundaries";
-NSString *const DDNCustomizedTemplateDetectAndNormalizeDocument = @"detect-and-normalize-document";
-NSString *const DDNCustomizedTemplateNormalizeDocument = @"normalize-document";
+NSString *const DDNCustomizedTemplateDetectDocumentBoundaries = @"DetectDocumentBoundaries_Default";
+NSString *const DDNCustomizedTemplateDetectAndNormalizeDocument = @"DetectAndNormalizeDocument_Default";
+NSString *const DDNCustomizedTemplateNormalizeDocument = @"NormalizeDocument_Default";
 NSString *const DDNCustomizedTemplateNormalizeDocumentGrayscale = @"normalize-document-grayscale";
 NSString *const DDNCustomizedTemplateNormalizeDocumentBinary = @"normalize-document-binary";
 
@@ -33,23 +33,22 @@ NSString *const DDNCustomizedTemplateNormalizeDocumentBinary = @"normalize-docum
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.dce open];
-    NSError *captureError;
     switch (self.ddnVideoType) {
         case EnumDDNVideoTypeScan:
         {
-            [self.dcv startCapturing:DDNCustomizedTemplateDetectDocumentBoundaries error:&captureError];
+            // Start Capturing. If success, you will be able to receive the capturedResult from the CapturedResultReceiver.
+            [self.dcv startCapturing:DDNCustomizedTemplateDetectDocumentBoundaries completionHandler:nil];
             break;
         }
         case EnumDDNVideoTypeAutoScan:
         {
-            [self.dcv startCapturing:DDNCustomizedTemplateDetectAndNormalizeDocument error:&captureError];
+            // Start Capturing. If success, you will be able to receive the capturedResult from the CapturedResultReceiver.
+            [self.dcv startCapturing:DDNCustomizedTemplateDetectAndNormalizeDocument completionHandler:nil];
             break;
         }
         default:
             break;
     }
-    
-    if (captureError) NSLog(@"captureError:%@", captureError);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -70,9 +69,11 @@ NSString *const DDNCustomizedTemplateNormalizeDocumentBinary = @"normalize-docum
 
 - (void)configureDDN {
     self.dcv = [[DSCaptureVisionRouter alloc] init];
+    // Add CapturedResultReceiver to receive result callback.
     [self.dcv addResultReceiver:self];
     
-    // Configure customized Json template.
+    // Initialize the settings from the template file.
+    // The template file is located in the Resource folder.
     NSString *customizedJsonPath = [[NSBundle mainBundle] pathForResource:@"ddn-mobile-sample" ofType:@"json"];
     NSError *templateError;
     [self.dcv initSettingsFromFile:customizedJsonPath error:&templateError];
@@ -81,16 +82,17 @@ NSString *const DDNCustomizedTemplateNormalizeDocumentBinary = @"normalize-docum
 
 - (void)addISA {
     self.cameraView = [[DSCameraView alloc] initWithFrame:self.view.bounds];
+    // Initialize Dynamsoft Camera Enhancer.
     self.dce = [[DSCameraEnhancer alloc] init];
     self.dce.cameraView = self.cameraView;
     self.dce.cameraView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.cameraView];
     
-    // DDN layer.
+    // Get the layer of DDN and set it visible.
     DSDrawingLayer *ddnDrawingLayer = [self.dce.cameraView getDrawingLayer:DSDrawingLayerIdDDN];
     ddnDrawingLayer.visible = true;
   
-    // Bind ISA to DCV.
+    // Set Dynamsoft Camera Enhancer as the input
     [self.dcv setInput:self.dce error:nil];
 }
 
@@ -114,7 +116,7 @@ NSString *const DDNCustomizedTemplateNormalizeDocumentBinary = @"normalize-docum
             self.captureButton.hidden = YES;
             self.tipLabel.text = @"Please keep your device stable.";
             
-            // Add Verification filter.
+            // Enable multi-frame result cross filter to receive more accurate boundaries.
             DSMultiFrameResultCrossFilter *resultFilter = [[DSMultiFrameResultCrossFilter alloc] init];
             [resultFilter enableResultCrossVerification:DSCapturedResultItemTypeNormalizedImage isEnabled:YES];
             [self.dcv addResultFilter:resultFilter];
@@ -130,6 +132,7 @@ NSString *const DDNCustomizedTemplateNormalizeDocumentBinary = @"normalize-docum
 }
 
 // MARK: - DSCapturedResultReceiver.
+// Implement the following method to receive the callback of detected boundaries.
 - (void)onDetectedQuadsReceived:(DSDetectedQuadsResult *)result {
     if (result.items.count == 0) {
         return;
@@ -140,6 +143,7 @@ NSString *const DDNCustomizedTemplateNormalizeDocumentBinary = @"normalize-docum
     
     isNeedToQuadEdit = NO;
     NSError *convertError;
+    // Get the original image.
     UIImage *image = [[[self.dcv getIntermediateResultManager] getOriginalImage:result.originalImageHashId] toUIImage:&convertError];
     
     if (image != nil) {
@@ -154,12 +158,14 @@ NSString *const DDNCustomizedTemplateNormalizeDocumentBinary = @"normalize-docum
     }
 }
 
+// Implement the following method to receive the callback of normalized image.
 - (void)onNormalizedImagesReceived:(DSNormalizedImagesResult *)result {
     if (result.items.count == 0) {
         return;
     }
     
     NSError *convertError;
+    // Get the original image.
     UIImage *image = [[[self.dcv getIntermediateResultManager] getOriginalImage:result.originalImageHashId] toUIImage:&convertError];
     
     DSQuadDrawingItem *quadDrawingItem = [[DSQuadDrawingItem alloc]  initWithDrawingStyleId:DSDrawingLayerIdDDN state:DSDrawingItemStateDefault quadrilateral:result.items[0].location];

@@ -30,7 +30,8 @@ class DetectViewController: UIViewController, CapturedResultReceiver {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         dce.open()
-        try? cvr.startCapturing(DetectTemplate)
+        // Start Capturing. If success, you will be able to receive the capturedResult from the CapturedResultReceiver.
+        cvr.startCapturing(DetectTemplate)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,16 +46,20 @@ class DetectViewController: UIViewController, CapturedResultReceiver {
         view.insertSubview(cameraView, at: 0)
         dce = CameraEnhancer()
         dce.cameraView = cameraView
+        // Get the layer of DDN and set it visible.
         let layer = cameraView.getDrawingLayer(DrawingLayerId.DDN.rawValue)
         layer?.visible = true
     }
     
     func setUpDCV() {
         cvr = CaptureVisionRouter()
+        // Initialize the settings from the template file.
+        // The template file is located in the resource folder.
         let path = Bundle.main.path(forResource: "ddn-mobile-sample", ofType: "json")
         if let path = path {
             try? cvr.initSettingsFromFile(path)
         }
+        // Set Dynamsoft Camera Enhancer as the input
         try? cvr.setInput(dce)
         cvr.addResultReceiver(self)
     }
@@ -63,11 +68,13 @@ class DetectViewController: UIViewController, CapturedResultReceiver {
         buttonTouched = true
     }
     
+    // Implement the following method to receive callback when the video frame is processed.
     func onDetectedQuadsReceived(_ result: DetectedQuadsResult) {
         if buttonTouched {
             buttonTouched = false
             if let items = result.items, items.count > 0 {
-                guard let data = cvr.getIntermediateResultManager().getOriginalImage(result.originalImageHashId) else {
+                // Get the original image.
+                guard let data = cvr.getIntermediateResultManager().getOriginalImage(result.originalImageHashId ?? "") else {
                     return
                 }
                 self.data = data

@@ -36,7 +36,7 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 
 #### Include the Framework Manually
 
-1. Download the Dynamsoft Document Normalizer SDK from <a href="https://download2.dynamsoft.com/ddn/dynamsoft-document-normalizer-ios-2.0.10.zip" target="_blank">Dynamsoft website</a>.
+1. Download the Dynamsoft Document Normalizer SDK from <a href="https://download2.dynamsoft.com/ddn/dynamsoft-document-normalizer-ios-2.0.20.zip" target="_blank">Dynamsoft website</a>.
 
 2. Drag and drop the `DynamsoftCaptureVisionRouter.framework`, `DynamsoftDocumentNormalizer.framework`, `DynamsoftCore.framewrok`, `DynamsoftImageProcessing.framework`, `DynamsoftLicense.framework`, `DynamsoftUtility.framework`, and `DynamsoftCameraEnhancer.framework` into your Xcode project. Make sure to check `Copy items if needed` and `Create groups` to copy the framework into your projects' folder.
 

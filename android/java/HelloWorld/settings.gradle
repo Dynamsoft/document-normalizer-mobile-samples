@@ -1,2 +1,10 @@
-rootProject.name = "HelloWord"
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = "HelloWord_DDN"
 include ':app'

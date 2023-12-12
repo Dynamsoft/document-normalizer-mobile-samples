@@ -33,10 +33,13 @@ android {
 }
 
 dependencies {
-    implementation "com.dynamsoft:dynamsoftcameraenhancer:4.0.0"
-    implementation "com.dynamsoft:dynamsoftcapturevisionrouter:2.0.10"
-    implementation "com.dynamsoft:dynamsoftdocumentnormalizer:2.0.10"
-    implementation "com.dynamsoft:dynamsoftutility:1.0.10"
+    implementation "com.dynamsoft:${artifactId.dce}:${versions.dce}"
+    implementation "com.dynamsoft:${artifactId.cvr}:${versions.cvr}"
+    implementation "com.dynamsoft:${artifactId.ddn}:${versions.ddn}"
+    implementation "com.dynamsoft:${artifactId.util}:${versions.util}"
+    implementation "com.dynamsoft:${artifactId.core}:${versions.core}"
+    implementation "com.dynamsoft:${artifactId.license}:${versions.license}"
+    implementation "com.dynamsoft:${artifactId.dip}:${versions.dip}"
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
     implementation 'androidx.appcompat:appcompat:1.5.1'

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,19 @@
 		0AD21EA92A5BF5DD00843160 /* DDNNormalizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD21EA82A5BF5DD00843160 /* DDNNormalizeViewController.m */; };
 		0AD21EAE2A5CE81500843160 /* ddn-mobile-sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AD21EAD2A5CE81500843160 /* ddn-mobile-sample.json */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		68B4F0542B22E83F00D972F5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0AD21E632A5BD75600843160 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +164,7 @@
 				0AD21E5F2A5BD75600843160 /* Sources */,
 				0AD21E602A5BD75600843160 /* Frameworks */,
 				0AD21E612A5BD75600843160 /* Resources */,
+				68B4F0542B22E83F00D972F5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

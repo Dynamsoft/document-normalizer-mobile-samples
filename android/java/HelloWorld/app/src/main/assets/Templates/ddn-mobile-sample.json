@@ -8,7 +8,7 @@
 			],
 			"ImageSource" : "",
 			"MaxParallelTasks" : 4,
-			"Name" : "normalize-document",
+			"Name" : "NormalizeDocument_Default",
 			"OutputOriginalImage" : 0,
 			"SemanticProcessingNameArray" : null,
 			"Timeout" : 10000
@@ -44,7 +44,7 @@
 			],
 			"ImageSource" : "",
 			"MaxParallelTasks" : 4,
-			"Name" : "detect-document-boundaries",
+			"Name" : "DetectDocumentBoundaries_Default",
 			"OutputOriginalImage" : 0,
 			"SemanticProcessingNameArray" : null,
 			"Timeout" : 10000
@@ -56,7 +56,7 @@
 			],
 			"ImageSource" : "",
 			"MaxParallelTasks" : 4,
-			"Name" : "detect-and-normalize-document",
+			"Name" : "DetectAndNormalizeDocument_Default",
 			"OutputOriginalImage" : 0,
 			"SemanticProcessingNameArray" : null,
 			"Timeout" : 10000
