@@ -2,6 +2,13 @@
 
 This repository contains multiple samples that demonstrates how to use the [Dynamsoft Document Normalizer](https://www.dynamsoft.com/document-normalizer/docs/core/introduction) Android and iOS Editions.
 
+- User Guide
+  - [Android](https://www.dynamsoft.com/document-normalizer/docs/mobile/programming/android/user-guide.html)
+  - [iOS](https://www.dynamsoft.com/document-normalizer/docs/mobile/programming/ios/user-guide.html)
+- API Reference
+  - [Android](https://www.dynamsoft.com/document-normalizer/docs/mobile/programming/android/api-reference/)
+  - [iOS](https://www.dynamsoft.com/document-normalizer/docs/mobile/programming/ios/api-reference/)
+
 ## Requirements
 
 ### Android
