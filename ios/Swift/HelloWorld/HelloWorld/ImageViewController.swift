@@ -63,6 +63,7 @@ class ImageViewController: UIViewController {
         }
     }
     
+    // Colour mode selection.
     func touchButton(type: ImageType) -> Void {
         var name:String
         switch type {
@@ -76,21 +77,26 @@ class ImageViewController: UIViewController {
         normalize(name: name)
     }
     
+    // Select the template and normalize the image. 
     func normalize(name:String) {
+        // Get the current simplified settings.
         if let settings = try? cvr.getSimplifiedSettings(name) {
+            // Set the previously detected boundary as the new ROI.
             settings.roi = quad
             settings.roiMeasuredInPercentage = false;
+            // Update the settings.
             try? cvr.updateSettings(name, settings: settings)
         }
-        guard let result = try? cvr.captureFromBuffer(data, templateName: name), let items = result.items, items.count > 0 else {
-            print("normalize failed")
-            return
-        }
-        if let item = items.first, item.type == .normalizedImage {
-            let imageItem:NormalizedImageResultItem = item as! NormalizedImageResultItem
-            let image = try? imageItem.imageData?.toUIImage()
-            DispatchQueue.main.async { [self] in
-                imageView.image = image
+        // Capture the image again with the new ROI.
+        let result = cvr.captureFromBuffer(data, templateName: name)
+        if let items = result.items, items.count > 0 {
+            if let item = items.first, item.type == .normalizedImage {
+                let imageItem:NormalizedImageResultItem = item as! NormalizedImageResultItem
+                // Get the normalized image and display it on the view.
+                let image = try? imageItem.imageData?.toUIImage()
+                DispatchQueue.main.async { [self] in
+                    imageView.image = image
+                }
             }
         }
     }

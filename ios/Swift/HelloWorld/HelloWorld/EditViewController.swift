@@ -28,9 +28,12 @@ class EditorViewController: UIViewController {
     }
 
     func setUpView() {
+        // Initialize the image editor view. On the Image editor view, you can display and edit the detected document boundaries.
         editorView = .init(frame: view.bounds)
         view.insertSubview(editorView, at: 0)
+        // Set the image that displayed on the editor view.
         editorView.imageData = data
+        // Get the layer of DDN and draw detected boundaries on the layer. 
         layer = editorView.getDrawingLayer(DrawingLayerId.DDN.rawValue)
         var array:[QuadDrawingItem] = .init()
         for item in items {
@@ -40,6 +43,7 @@ class EditorViewController: UIViewController {
     }
     
     @IBAction func touchEvent(_ sender: Any) {
+        // Get the selected quad and use the quad as the ROI for further process.
         var drawingItem = editorView.getSelectedDrawingItem()
         if drawingItem == nil {
             for item in layer.drawingItems! {

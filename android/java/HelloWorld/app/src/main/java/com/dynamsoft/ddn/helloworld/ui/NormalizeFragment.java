@@ -25,6 +25,7 @@ public class NormalizeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         cvr = new CaptureVisionRouter(requireContext());
         try {
+            // Init settings from the template file. The file is located in the assets folder.
             cvr.initSettingsFromFile("ddn-mobile-sample.json");
         } catch (CaptureVisionRouterException e) {
             e.printStackTrace();

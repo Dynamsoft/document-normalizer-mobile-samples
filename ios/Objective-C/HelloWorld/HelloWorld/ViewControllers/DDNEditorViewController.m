@@ -27,10 +27,13 @@
 }
 
 - (void)configImageEditorView {
+    // Initialize the image editor view. On the Image editor view, you can display and edit the detected document boundaries.
     editorView = [[DSImageEditorView alloc] initWithFrame:self.view.bounds];
+    // Set the image that displayed on the editor view.
     editorView.image = self.resultImage;
     [self.view addSubview:editorView];
     
+    // Get the layer of DDN and draw detected boundaries on the layer. 
     layer = [editorView getDrawingLayer:DSDrawingLayerIdDDN];
     NSMutableArray<DSDrawingItem *> *drawingArray = [NSMutableArray array];
     for (DSDetectedQuadResultItem *quadResultItem in self.detectedQuadResultsArr) {
@@ -45,6 +48,7 @@
 }
 
 - (void)normalizeAction {    
+    // Get the selected quad and use the quad as the ROI for further process.
     DSQuadDrawingItem *selectedItem = (DSQuadDrawingItem *)[editorView getSelectedDrawingItem];
     if(selectedItem == nil) {
         selectedItem = layer.drawingItems.count > 0 ? (DSQuadDrawingItem *)layer.drawingItems[0] : nil;

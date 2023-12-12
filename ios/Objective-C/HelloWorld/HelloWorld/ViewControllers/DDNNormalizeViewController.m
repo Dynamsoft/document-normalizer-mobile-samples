@@ -61,6 +61,7 @@
     }
 }
 
+// Switch different template to change the colour mode.
 - (void)normalizeWithType:(EnumNormalizeType)normalizeType {
     NSString *normalizeTemplateName = DDNCustomizedTemplateNormalizeDocument;
     switch (normalizeType) {
@@ -85,22 +86,25 @@
     
     // 1. Set ROI.
     NSError *cvrSettingError;
+    // Get the current settings.
     DSSimplifiedCaptureVisionSettings *cvrSettings = [self.dcv getSimplifiedSettings:normalizeTemplateName error:&cvrSettingError];
     if (cvrSettings != nil) {
+        // Set the previously detected boundary as the new ROI.
         cvrSettings.roi = self.selectedItem.quad;
         cvrSettings.roiMeasuredInPercentage = NO;
 
         NSError *cvrUpdateSettingError = nil;
+        // Update the settings.
         [self.dcv updateSettings:normalizeTemplateName settings:cvrSettings error:&cvrUpdateSettingError];
         if (cvrUpdateSettingError) NSLog(@"cvrUpdateSettingError:%@", cvrUpdateSettingError);
     }
     if (cvrSettingError) NSLog(@"cvrSettings:%@", cvrSettings);
 
     // 2. Normalize.
-    NSError *ddnCaptureError;
-    DSCapturedResult *result = [self.dcv captureFromImage:self.resultImage templateName:normalizeTemplateName error:&ddnCaptureError];
-    if (ddnCaptureError) NSLog(@"ddnCaptureError:%@", ddnCaptureError);
-
+    // Capture the image with the new ROI.
+    DSCapturedResult *result = [self.dcv captureFromImage:self.resultImage templateName:normalizeTemplateName];
+    
+    // Receive the normalized image and display.
     if (result.items.count > 0) {
         DSNormalizedImageResultItem *normalizedResultItem = (DSNormalizedImageResultItem *)result.items[0];
         self.normalizedImageV.image = [normalizedResultItem.imageData toUIImage:nil];

@@ -1,7 +1,6 @@
 package com.dynamsoft.ddn.helloworld.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +61,7 @@ public class ScannerFragment extends Fragment {
         dce = new CameraEnhancer(binding.cameraView, getViewLifecycleOwner());
         if (viewModel.template.equals(EnumPresetTemplate.PT_DETECT_AND_NORMALIZE_DOCUMENT)) {
             try {
+                // Enable the frame filter feature of Dynamsoft Camera Enhancer to process the high quality video frames only.
                 dce.enableEnhancedFeatures(EnumEnhancerFeatures.EF_FRAME_FILTER);
             } catch (CameraEnhancerException e) {
                 throw new RuntimeException(e);
@@ -69,6 +69,7 @@ public class ScannerFragment extends Fragment {
         }
 
         try {
+            // Set Dynamsoft Camera Enhancer as the input.
             cvr.setInput(dce);
         } catch (CaptureVisionRouterException e) {
             throw new RuntimeException(e);
@@ -81,13 +82,17 @@ public class ScannerFragment extends Fragment {
 
         //Auto-scan Mode
         if (viewModel.template.equals(EnumPresetTemplate.PT_DETECT_AND_NORMALIZE_DOCUMENT)) {
+            // Enable the result cross verification so that the output of detected boundary will be more accurate.
             MultiFrameResultCrossFilter filter = new MultiFrameResultCrossFilter();
             filter.enableResultCrossVerification(EnumCapturedResultItemType.CRIT_NORMALIZED_IMAGE, true);
+            // Add the result filter to capture vision router.
             cvr.addResultFilter(filter);
         }
 
+        // Add result receiver to receive callback when the result output.
         cvr.addResultReceiver(new CapturedResultReceiver() {
             @Override
+            // Implement the callback that receives detected document boundaries.
             public void onDetectedQuadsReceived(DetectedQuadsResult result) {
                 if (ifBtnClick && result.getItems().length > 0) {
                     ifBtnClick = false;
@@ -106,8 +111,8 @@ public class ScannerFragment extends Fragment {
             }
 
             @Override
+            // Implement the callback that receives detected document boundaries.
             public void onNormalizedImagesReceived(NormalizedImagesResult result) {
-                //Auto Scan Mode
                 if (ifNeedToShowResult && result.getItems().length > 0) {
                     ifNeedToShowResult = false;
                     viewModel.colourNormalizedImageData = result.getItems()[0].getImageData();
@@ -128,10 +133,10 @@ public class ScannerFragment extends Fragment {
         super.onResume();
         try {
             dce.open();
-            cvr.startCapturing(viewModel.template);
-        } catch (CaptureVisionRouterException | CameraEnhancerException e) {
+        } catch (CameraEnhancerException e) {
             e.printStackTrace();
         }
+        cvr.startCapturing(viewModel.template, null);
         ifNeedToShowResult = true;
     }
 

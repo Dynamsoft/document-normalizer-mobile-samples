@@ -6,9 +6,9 @@
 
 import UIKit
 
-let DetectTemplate = "detect-document-boundaries"
-let DetectAndNormalizeTemplate = "detect-and-normalize-document"
-let ColorNormalizeTemplate = "normalize-document"
+let DetectTemplate = "DetectDocumentBoundaries_Default"
+let DetectAndNormalizeTemplate = "DetectAndNormalizeDocument_Default"
+let ColorNormalizeTemplate = "NormalizeDocument_Default"
 let GrayNormalizeTemplate = "normalize-document-grayscale"
 let BinartNormalizeTemplate = "normalize-document-binary"
 
