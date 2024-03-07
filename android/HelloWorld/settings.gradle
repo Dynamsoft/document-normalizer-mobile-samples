@@ -1,0 +1,13 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = "HelloWord"
+include ':AutoNormalize'
+include ':EditAndNormalize'
+include ':AutoNormalizeKt'
+include ':EditAndNormalizeKt'

@@ -1,0 +1,17 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '11.0'
+
+target 'AutoNormalizeObjc' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for AutoNormalizeObjc
+  pod 'DynamsoftCore','3.2.10'
+  pod 'DynamsoftImageProcessing','2.2.10'
+  pod 'DynamsoftLicense','3.2.10'
+  pod 'DynamsoftDocumentNormalizer','2.2.10'
+  pod 'DynamsoftCaptureVisionRouter','2.2.10'
+  pod 'DynamsoftCameraEnhancer','4.2.0'
+  pod 'DynamsoftUtility','1.2.10'
+
+end

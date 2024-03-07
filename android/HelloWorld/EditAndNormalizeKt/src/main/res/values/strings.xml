@@ -1,0 +1,13 @@
+<resources>
+	<string name="app_name">EditAndNormalizeKt</string>
+
+	<string name="scanner_fragment_label">Scanner</string>
+	<string name="editor_fragment_label">Editor</string>
+	<string name="normalize_fragment_label">Normalize</string>
+	<string name="btn_binary">Binary</string>
+	<string name="btn_grayscale">GrayScale</string>
+	<string name="btn_colour">Colour</string>
+	<string name="iv_normalize_description">Load normalized imageData in different color mode.</string>
+	<string name="btn_capture">Capture</string>
+	<string name="btn_normalize">Normalize</string>
+</resources>

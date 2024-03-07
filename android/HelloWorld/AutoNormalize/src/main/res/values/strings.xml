@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AutoNormalize</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="scanner_fragment_label">Scanner</string>
+    <string name="normalize_fragment_label">Normalize</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="btn_binary">Binary</string>
+    <string name="btn_grayscale">GrayScale</string>
+    <string name="btn_colour">Colour</string>
+    <string name="iv_normalize_description">Load normalized imageData in different color mode.</string>
+</resources>
