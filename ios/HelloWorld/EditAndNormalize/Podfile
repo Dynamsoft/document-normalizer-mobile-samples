@@ -10,7 +10,7 @@ target 'EditAndNormalize' do
   pod 'DynamsoftImageProcessing','2.2.10'
   pod 'DynamsoftLicense','3.2.10'
   pod 'DynamsoftDocumentNormalizer','2.2.10'
-  pod 'DynamsoftCaptureVisionRouter','2.2.10'
+  pod 'DynamsoftCaptureVisionRouter','2.2.11'
   pod 'DynamsoftCameraEnhancer','4.2.0'
   pod 'DynamsoftUtility','1.2.10'
 
