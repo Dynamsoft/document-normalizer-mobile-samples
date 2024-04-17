@@ -79,9 +79,8 @@ class AutoScanViewController: UIViewController, CapturedResultReceiver {
     // Implement the following method to receive the callback of normalized image.
     func onNormalizedImagesReceived(_ result: NormalizedImagesResult) {
         if let items = result.items, items.count > 0 {
-            guard let data = cvr.getIntermediateResultManager().getOriginalImage(result.originalImageHashId ?? "") else {
-                return
-            }
+            guard let firstItem = items.first, let data = firstItem.imageData else { return }
+
             DispatchQueue.main.async(execute: {
                 self.cvr.stopCapturing()
             })

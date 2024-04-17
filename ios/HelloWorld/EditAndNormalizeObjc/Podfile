@@ -6,12 +6,6 @@ target 'EditAndNormalizeObjc' do
   use_frameworks!
 
   # Pods for EditAndNormalizeObjc
-  pod 'DynamsoftCore','3.2.10'
-  pod 'DynamsoftImageProcessing','2.2.10'
-  pod 'DynamsoftLicense','3.2.10'
-  pod 'DynamsoftDocumentNormalizer','2.2.10'
-  pod 'DynamsoftCaptureVisionRouter','2.2.11'
-  pod 'DynamsoftCameraEnhancer','4.2.0'
-  pod 'DynamsoftUtility','1.2.10'
+  pod 'DynamsoftDocumentNormalizerBundle','2.2.11'
 
 end

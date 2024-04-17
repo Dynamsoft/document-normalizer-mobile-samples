@@ -112,9 +112,9 @@
         return;
     }
     
-    NSError *convertError;
     // Get the original image.
-    UIImage *image = [[[self.dcv getIntermediateResultManager] getOriginalImage:result.originalImageHashId] toUIImage:&convertError];
+    NSError *convertError;
+    UIImage *image = [result.items.firstObject.imageData toUIImage:&convertError];
     
     DSQuadDrawingItem *quadDrawingItem = [[DSQuadDrawingItem alloc]  initWithDrawingStyleId:DSDrawingLayerIdDDN state:DSDrawingItemStateDefault quadrilateral:result.items[0].location];
     if (image != nil) {
