@@ -6,7 +6,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "HelloWord"
+rootProject.name = "HelloWord_DDN"
 include ':AutoNormalize'
 include ':EditAndNormalize'
 include ':AutoNormalizeKt'

@@ -44,6 +44,7 @@ class DetectViewController: UIViewController, CapturedResultReceiver {
         super.viewWillDisappear(animated)
         dce.close()
         cvr.stopCapturing()
+        dce.clearBuffer()
     }
 
     func setUpCamera() {

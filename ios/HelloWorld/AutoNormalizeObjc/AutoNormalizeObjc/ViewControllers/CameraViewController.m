@@ -120,6 +120,7 @@
     if (image != nil) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.dcv stopCapturing];
+            [self.dce clearBuffer];
             DDNNormalizeViewController *ddnNormalizerVC = [[DDNNormalizeViewController alloc] init];
             ddnNormalizerVC.dcv = self.dcv;
             ddnNormalizerVC.resultImage = image;

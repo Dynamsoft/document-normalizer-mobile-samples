@@ -83,6 +83,7 @@ class AutoScanViewController: UIViewController, CapturedResultReceiver {
 
             DispatchQueue.main.async(execute: {
                 self.cvr.stopCapturing()
+                self.dce.clearBuffer()
             })
             self.data = data
             let quad = items.first?.location

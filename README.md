@@ -1,6 +1,6 @@
 # Dynamsoft Document Normalizer samples for Android and iOS editions
 
-This repository contains multiple samples that demonstrates how to use the [Dynamsoft Document Normalizer](https://www.dynamsoft.com/document-normalizer/docs/core/introduction) Android and iOS Editions.
+This repository contains multiple samples that demonstrate how to use the [Dynamsoft Document Normalizer](https://www.dynamsoft.com/document-normalizer/docs/core/introduction) Android and iOS Editions.
 
 - User Guide
   - [Android](https://www.dynamsoft.com/document-normalizer/docs/mobile/programming/android/user-guide.html)
@@ -15,11 +15,11 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 
 - Supported OS: Android 5.0 (API Level 21) or higher.
 - Supported ABI: **armeabi-v7a**, **arm64-v8a**, **x86** and **x86_64**.
-- Development Environment: Android Studio 3.4+ (Android Studio 4.2+ recommended).
+- Development Environment: Android Studio 2022.2.1 or higher.
 
 ### iOS
 
-- Supported OS: **iOS 11.0** or higher.
+- Supported OS: iOS 11 or higher (iOS 13 and higher recommended).
 - Supported ABI: **arm64** and **x86_64**.
 - Development Environment: Xcode 13.0 and above (Xcode 14.1+ recommended), CocoaPods 1.11.0+
 
@@ -43,9 +43,9 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 
 #### Include the Framework Manually
 
-1. Download the Dynamsoft Document Normalizer SDK from <a href="https://download2.dynamsoft.com/ddn/dynamsoft-document-normalizer-ios-2.0.20.zip" target="_blank">Dynamsoft website</a>.
+1. Download the Dynamsoft Document Normalizer SDK from <a href="https://download2.dynamsoft.com/ddn/dynamsoft-document-normalizer-ios-2.2.1100.zip" target="_blank">Dynamsoft website</a>.
 
-2. Drag and drop the `DynamsoftCaptureVisionRouter.framework`, `DynamsoftDocumentNormalizer.framework`, `DynamsoftCore.framewrok`, `DynamsoftImageProcessing.framework`, `DynamsoftLicense.framework`, `DynamsoftUtility.framework`, and `DynamsoftCameraEnhancer.framework` into your Xcode project. Make sure to check `Copy items if needed` and `Create groups` to copy the framework into your projects' folder.
+2. Drag and drop the `DynamsoftCaptureVisionRouter.xcframework`, `DynamsoftDocumentNormalizer.xcframework`, `DynamsoftCore.xcframework`, `DynamsoftImageProcessing.xcframework`, `DynamsoftLicense.xcframework`, `DynamsoftUtility.xcframework`, and `DynamsoftCameraEnhancer.xcframework` into your Xcode project. Make sure to check `Copy items if needed` and `Create groups` to copy the framework into your projects' folder.
 
 3. Click on the project. Go to the `General --> Frameworks --> Libraries and Embedded Content`. Set the embed type to `Embed & Sign`.
 

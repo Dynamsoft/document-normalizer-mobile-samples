@@ -122,6 +122,7 @@
     if (image != nil) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.dcv stopCapturing];
+            [self.dce clearBuffer];
             DDNEditorViewController *ddnEditorVC = [[DDNEditorViewController alloc] init];
             ddnEditorVC.resultImage = image;
             ddnEditorVC.detectedQuadResultsArr = result.items;
