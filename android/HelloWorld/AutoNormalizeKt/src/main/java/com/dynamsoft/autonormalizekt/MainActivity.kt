@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
+            // Initialize license for Dynamsoft Document Normalizer.
             LicenseManager.initLicense(LICENSE, this) { isSuccess: Boolean, error: Exception? ->
                 if (!isSuccess) {
                     error?.printStackTrace()
@@ -40,6 +41,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        // The license string here is a time-limited trial license. Note that network connection is required for this license to work.
+        // You can also request a 30-day trial license via the Request a Trial License link: https://www.dynamsoft.com/customer/license/trialLicense?product=ddn&utm_source=github&package=android
         private const val LICENSE = "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9"
     }
 }
