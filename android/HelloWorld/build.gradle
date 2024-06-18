@@ -15,10 +15,14 @@ allprojects {
 
 def getBranch() {
     def branch = ""
-    def proc = "git rev-parse --abbrev-ref HEAD".execute()
-    proc.in.eachLine { line -> branch = line }
-    proc.err.eachLine { line -> branch = line  }
-    proc.waitFor()
+    try {
+        def proc = "git rev-parse --abbrev-ref HEAD".execute()
+        proc.in.eachLine { line -> branch = line }
+        proc.err.eachLine { line -> branch = line  }
+        proc.waitFor()
+    } catch (e) {
+        branch = e.getMessage()
+    }
     return branch
 }
 
