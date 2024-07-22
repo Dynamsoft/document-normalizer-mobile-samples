@@ -76,7 +76,7 @@ public class NormalizeFragment extends Fragment {
             e.printStackTrace();
         }
         CapturedResult result = router.capture(viewModel.normalizedImage, EnumPresetTemplate.PT_NORMALIZE_DOCUMENT);
-        if (result != null && result.getItems() != null && result.getItems().length > 0) {
+        if (result.getItems().length > 0) {
             return ((NormalizedImageResultItem) result.getItems()[0]).getImageData();
         }
         return null;

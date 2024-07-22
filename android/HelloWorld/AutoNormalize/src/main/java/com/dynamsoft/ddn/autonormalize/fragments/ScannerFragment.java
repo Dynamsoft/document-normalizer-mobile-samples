@@ -128,8 +128,8 @@ public class ScannerFragment extends Fragment {
         // Add result receiver to receive callback when the result output.
         mRouter.addResultReceiver(new CapturedResultReceiver() {
             @Override
-            public void onNormalizedImagesReceived(NormalizedImagesResult result) {
-                if(result.getItems() != null && result.getItems().length > 0) {
+            public void onNormalizedImagesReceived(@NonNull NormalizedImagesResult result) {
+                if(result.getItems().length > 0) {
                     mViewModel.normalizedImage = result.getItems()[0].getImageData();
                     mRouter.stopCapturing();
                     requireActivity().runOnUiThread(()-> NavHostFragment.findNavController(ScannerFragment.this)

@@ -69,7 +69,7 @@ public class EditorFragment extends Fragment {
         // Use the capture method to process the image.
         CapturedResult result = router.capture(imageData, template);
 
-        if (result.getItems() != null && result.getItems().length > 0) {
+        if (result.getItems().length > 0) {
             return ((NormalizedImageResultItem) result.getItems()[0]).getImageData();
         } else {
             return null;

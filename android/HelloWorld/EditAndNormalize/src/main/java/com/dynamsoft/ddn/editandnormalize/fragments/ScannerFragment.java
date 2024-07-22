@@ -126,7 +126,7 @@ public class ScannerFragment extends Fragment {
         // Add result receiver to receive callback when the result output.
         mRouter.addResultReceiver(new CapturedResultReceiver() {
             @Override
-            public void onDetectedQuadsReceived(DetectedQuadsResult result) {
+            public void onDetectedQuadsReceived(@NonNull DetectedQuadsResult result) {
                 if (ifBtnClick && result.getItems().length > 0) {
                     ifBtnClick = false;
                     mViewModel.capturedQuads = new Quadrilateral[result.getItems().length];
