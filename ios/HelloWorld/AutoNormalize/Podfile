@@ -6,6 +6,6 @@ target 'AutoNormalize' do
   use_frameworks!
 
   # Pods for AutoNormalize
-  pod 'DynamsoftDocumentNormalizerBundle','2.2.1100'
+  pod 'DynamsoftDocumentNormalizerBundle','2.2.1101'
 
 end
