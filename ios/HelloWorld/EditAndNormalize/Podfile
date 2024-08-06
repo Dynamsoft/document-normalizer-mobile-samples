@@ -6,6 +6,6 @@ target 'EditAndNormalize' do
   use_frameworks!
 
   # Pods for EditAndNormalize
-  pod 'DynamsoftDocumentNormalizerBundle','2.2.1100'
+  pod 'DynamsoftDocumentNormalizerBundle','2.2.1101'
 
 end
