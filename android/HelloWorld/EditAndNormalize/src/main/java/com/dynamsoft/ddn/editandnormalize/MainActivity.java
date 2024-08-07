@@ -1,6 +1,7 @@
 package com.dynamsoft.ddn.editandnormalize;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,18 +15,18 @@ import com.dynamsoft.ddn.editandnormalize.databinding.ActivityMainBinding;
 import com.dynamsoft.license.LicenseManager;
 
 public class MainActivity extends AppCompatActivity {
-    // Initialize license for Dynamsoft Document Normalizer.
-    // The license string here is a time-limited trial license. Note that network connection is required for this license to work.
-    // You can also request a 30-day trial license via the Request a Trial License link: https://www.dynamsoft.com/customer/license/trialLicense?product=ddn&utm_source=github&package=android
-    private static final String LICENSE = "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9";
     private AppBarConfiguration appBarConfiguration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(savedInstanceState == null) {
-            LicenseManager.initLicense(LICENSE, this, (isSuccess, error) -> {
+            // Initialize the license.
+            // The license string here is a trial license. Note that network connection is required for this license to work.
+            // You can request an extension via the following link: https://www.dynamsoft.com/customer/license/trialLicense?product=ddn&utm_source=samples&package=android
+            LicenseManager.initLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", this, (isSuccess, error) -> {
                 if (!isSuccess) {
                     error.printStackTrace();
+                    runOnUiThread(()-> ((TextView) findViewById(R.id.tv_license_error)).setText("License initialization failed: "+error.getMessage()));
                 }
             });
         }

@@ -1,7 +1,8 @@
 package com.dynamsoft.autonormalizekt
 
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -16,10 +17,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            // Initialize license for Dynamsoft Document Normalizer.
-            LicenseManager.initLicense(LICENSE, this) { isSuccess: Boolean, error: Exception? ->
+            // Initialize the license.
+            // The license string here is a trial license. Note that network connection is required for this license to work.
+            // You can request an extension via the following link: https://www.dynamsoft.com/customer/license/trialLicense?product=ddn&utm_source=samples&package=android
+            LicenseManager.initLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9", this) { isSuccess: Boolean, error: Exception? ->
                 if (!isSuccess) {
                     error?.printStackTrace()
+                    runOnUiThread { findViewById<TextView>(R.id.tv_license_error).text = "License initialization failed: ${error!!.message}" }
                 }
             }
         }
@@ -38,11 +42,5 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(this, R.id.nav_host_fragment_content_main)
         return (navigateUp(navController, appBarConfiguration!!)
                 || super.onSupportNavigateUp())
-    }
-
-    companion object {
-        // The license string here is a time-limited trial license. Note that network connection is required for this license to work.
-        // You can also request a 30-day trial license via the Request a Trial License link: https://www.dynamsoft.com/customer/license/trialLicense?product=ddn&utm_source=github&package=android
-        private const val LICENSE = "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9"
     }
 }
