@@ -1,5 +1,7 @@
 # Dynamsoft Document Normalizer samples for Android and iOS editions
 
+⚠️ **Notice:** This repository has been **archived**. For the latest examples utilizing document normalization features, please visit the **[Dynamsoft Capture Vision Samples](https://github.com/Dynamsoft/capture-vision-mobile-samples)** repository. 🚀
+
 This repository contains multiple samples that demonstrate how to use the [Dynamsoft Document Normalizer](https://www.dynamsoft.com/document-normalizer/docs/core/introduction) Android and iOS Editions.
 
 - User Guide
